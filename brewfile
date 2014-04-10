@@ -14,6 +14,7 @@ brew tap josegonzalez/homebrew-php
 brew install git
 brew install node
 brew install brew-cask
+brew install wget
 brew install vim
 
 # apps
@@ -36,6 +37,8 @@ brew cask install google-chrome-canary
 brew cask install google-chrome-beta
 brew cask install google-chrome
 brew cask install iterm2-beta
- 
+brew cask install virtualbox
+brew cask install vagrant
+
 # link auto pour alfred
 brew cask alfred link

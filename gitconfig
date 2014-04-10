@@ -1,3 +1,18 @@
 [user]
   name = Sébastien Balayn
   email = sebastien.balayn@gmail.com
+
+[github]
+  user = Nyalab
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple
+
+[alias]
+  s = status
+  c = commit
+  co = checkout
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
