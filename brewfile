@@ -1,0 +1,41 @@
+#!/bin/sh
+
+brew update
+brew upgrade
+
+# ça tapine
+brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap phinze/cask
+brew tap caskroom/versions
+brew tap josegonzalez/homebrew-php
+
+# la base, posey
+brew install git
+brew install node
+brew install brew-cask
+brew install vim
+
+# apps
+brew cask install alfred
+brew cask install limechat
+brew cask install skype
+brew cask install dropbox
+brew cask install rdio
+brew cask install cloud
+
+# required by some updates for brew
+brew cask install xquartz
+
+# web dev tavu 
+brew cask install sublime-text3
+brew cask install firefox-nightly
+brew cask install firefox-aurora
+brew cask install firefox
+brew cask install google-chrome-canary
+brew cask install google-chrome-beta
+brew cask install google-chrome
+brew cask install iterm2-beta
+ 
+# link auto pour alfred
+brew cask alfred link

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+echo "donne moi les pleins pouvoirs, gros"
+sudo -v
+
+if ! type "brew" > /dev/null; then
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
+if ! type "/usr/local/bin/zsh" > /dev/null; then
+  brew install zsh
+  echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
+  chsh -s /usr/local/bin/zsh
+  echo "restart l'application de terminal pour finir l'install de zsh"
+fi
+
+source ./brewfile
+source ./osx
+
+ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
