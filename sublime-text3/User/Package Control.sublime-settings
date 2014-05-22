@@ -1,6 +1,9 @@
 {
 	"installed_packages":
 	[
+		"Jade",
+		"JSON Reindent",
+		"LESS",
 		"SyncedSideBar",
 		"Theme - Flatland"
 	]

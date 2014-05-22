@@ -38,7 +38,6 @@ brew cask install google-chrome-beta
 brew cask install google-chrome
 brew cask install virtualbox
 brew cask install vagrant
-brew cask install totalterminal
 brew cask install sequel-pro
 
 # link auto pour alfred
