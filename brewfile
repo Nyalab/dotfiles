@@ -22,7 +22,7 @@ brew cask install alfred
 brew cask install limechat
 brew cask install skype
 brew cask install dropbox
-brew cask install rdio
+brew cask install spotify
 brew cask install cloud
 
 # required by some updates for brew
