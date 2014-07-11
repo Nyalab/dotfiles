@@ -30,6 +30,7 @@ brew cask install xquartz
 
 # web dev tavu 
 brew cask install sublime-text3
+brew cask install atom
 brew cask install firefox-nightly
 brew cask install firefox-aurora
 brew cask install firefox
