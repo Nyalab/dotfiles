@@ -28,7 +28,7 @@ brew cask install cloud
 # required by some updates for brew
 brew cask install xquartz
 
-# web dev tavu 
+# web dev tavu
 brew cask install sublime-text3
 brew cask install atom
 brew cask install firefox-nightly
@@ -40,7 +40,7 @@ brew cask install google-chrome
 brew cask install virtualbox
 brew cask install vagrant
 brew cask install sequel-pro
-brew cask install cyberduck
+brew cask install sourcetree
 
 # link auto pour alfred
 brew cask alfred link
