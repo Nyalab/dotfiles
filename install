@@ -19,3 +19,9 @@ source ./osx
 
 ln -s ~/dotfiles/zshrc ~/.zshrc
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
+
+# Si .vimrc n'exsite pas, vim fait n'importe quoi sous osx
+if [ ! -f ~/.vimrc ]
+then
+  touch ~/.vimrc
+fi

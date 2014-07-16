@@ -6,3 +6,4 @@ differences between install / update
 add silent mode
 add the symlinking for sublime configuration
 try mackup (https://github.com/lra/mackup)
+test if /usr/local/bin/zsh exists already at the end of /etc/shells file and don't add it if so
