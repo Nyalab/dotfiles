@@ -14,11 +14,14 @@ if ! type "/usr/local/bin/zsh" > /dev/null; then
   echo "restart l'application de terminal pour finir l'install de zsh"
 fi
 
+zsh ./zshinstall
+
 source ./brewfile
 source ./osx
 
-ln -s ~/dotfiles/zshrc ~/.zshrc
-ln -s ~/dotfiles/gitconfig ~/.gitconfig
+if [ ! -f "$HOME/.gitconfig" ]; then
+  ln -s ~/dotfiles/gitconfig ~/.gitconfig
+fi
 
 # Si .vimrc n'exsite pas, vim fait n'importe quoi sous osx
 if [ ! -f ~/.vimrc ]
