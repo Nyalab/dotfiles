@@ -1,10 +1,14 @@
 {
 	"installed_packages":
 	[
+		"EditorConfig",
+		"FileDiffs",
 		"Jade",
 		"JSON Reindent",
 		"LESS",
+		"SideBarEnhancements",
 		"SyncedSideBar",
-		"Theme - Flatland"
+		"Theme - Flatland",
+		"Twig"
 	]
 }
