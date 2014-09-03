@@ -17,3 +17,5 @@ man() {
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+alias fuck='sudo $(history -p \!\!)'
