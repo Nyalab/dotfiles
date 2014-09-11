@@ -1,15 +1,29 @@
 {
-	"color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme",
-	"flatland_sidebar_tree_small": true,
+	"caret_extra_width": 1,
+	"caret_style": "phase",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.light.tmTheme",
+	"default_line_ending": "unix",
+	"ensure_newline_at_eof_on_save": true,
 	"font_size": 11,
+	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
+	"line_padding_bottom": -1,
+	"line_padding_top": -1,
+	"open_files_in_new_window": false,
 	"rulers":
 	[
 		80,
 		120
 	],
-	"theme": "Flatland Dark.sublime-theme"
+	"shift_tab_unindent": true,
+	"show_encoding": true,
+	"show_full_path": false,
+	"tab_size": 2,
+	"theme": "Spacegray Light.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
 }

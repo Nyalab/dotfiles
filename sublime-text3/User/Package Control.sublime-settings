@@ -1,14 +1,15 @@
 {
 	"installed_packages":
 	[
+		"Colorsublime",
 		"EditorConfig",
 		"FileDiffs",
 		"Jade",
 		"JSON Reindent",
 		"LESS",
+		"PHP-Twig",
 		"SideBarEnhancements",
 		"SyncedSideBar",
-		"Theme - Flatland",
-		"Twig"
+		"Theme - Spacegray"
 	]
 }
