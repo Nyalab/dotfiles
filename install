@@ -24,7 +24,13 @@ if [ ! -f "$HOME/.gitconfig" ]; then
 fi
 
 # Si .vimrc n'exsite pas, vim fait n'importe quoi sous osx
-if [ ! -f ~/.vimrc ]
-then
+if [ ! -f ~/.vimrc ]; then
   touch ~/.vimrc
+fi
+
+if [ ! -f "$HOME/Library/Preferences/com.divisiblebyzero.Spectacle.plist" ]; then
+  ln -s ~/dotfiles/spectacle/com.divisiblebyzero.Spectacle.plist ~/Library/Preferences/com.divisiblebyzero.Spectacle.plist
+else
+  rm ~/Library/Preferences/com.divisiblebyzero.Spectacle.plist
+  ln -s ~/dotfiles/spectacle/com.divisiblebyzero.Spectacle.plist ~/Library/Preferences/com.divisiblebyzero.Spectacle.plist
 fi

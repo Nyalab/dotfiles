@@ -24,6 +24,7 @@ brew cask install skype
 brew cask install dropbox
 brew cask install spotify
 brew cask install cloud
+brew cask install spectacle
 
 # required by some updates for brew
 brew cask install xquartz
