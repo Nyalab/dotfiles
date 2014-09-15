@@ -19,4 +19,5 @@
   spp = !git stash clear && git stash && git pull --rebase && git stash pop
 
 [core]
-    pager = `brew --prefix`/share/git-core/contrib/diff-highlight/diff-highlight | less
+  editor = vim
+  pager = `brew --prefix`/share/git-core/contrib/diff-highlight/diff-highlight | less
