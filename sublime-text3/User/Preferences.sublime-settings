@@ -5,7 +5,7 @@
 	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.light.tmTheme",
 	"default_line_ending": "unix",
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 11,
+	"font_size": 12,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[

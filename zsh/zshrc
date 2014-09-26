@@ -19,3 +19,5 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 alias fuck='sudo $(history -p \!\!)'
+# added by travis gem
+[ -f /Users/sbalayn/.travis/travis.sh ] && source /Users/sbalayn/.travis/travis.sh
