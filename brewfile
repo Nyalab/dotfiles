@@ -8,6 +8,9 @@ brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap phinze/cask
 brew tap caskroom/versions
+brew tap caskroom/fonts
+
+# ouais lol
 brew tap josegonzalez/homebrew-php
 
 # la base, posey
@@ -18,7 +21,6 @@ brew install wget
 brew install vim
 
 # apps
-brew cask install alfred
 brew cask install limechat
 brew cask install skype
 brew cask install dropbox
@@ -26,22 +28,25 @@ brew cask install spotify
 brew cask install cloud
 brew cask install spectacle
 
+# trop un pirateur tavu
+brew cask install vlc
+brew cask install subtitles
+
 # required by some updates for brew
 brew cask install xquartz
 
 # web dev tavu
 brew cask install sublime-text3
-brew cask install atom
 brew cask install firefox-nightly
-brew cask install firefox-aurora
 brew cask install firefox
-brew cask install google-chrome-canary
-brew cask install google-chrome-beta
 brew cask install google-chrome
 brew cask install virtualbox
 brew cask install vagrant
 brew cask install sequel-pro
-brew cask install sourcetree
 
-# link auto pour alfred
-brew cask alfred link
+#fonts
+brew cask install font-roboto
+brew cask install font-open-sans
+brew cask install font-open-sans-condensed
+brew cask install font-lato
+brew cask install font-fantasque-sans-mono
