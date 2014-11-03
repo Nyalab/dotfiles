@@ -2,10 +2,11 @@
 	"caret_extra_width": 1,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.light.tmTheme",
+	"color_scheme": "Packages/User/Colorsublime/themes/Tomorrow.tmTheme",
 	"default_line_ending": "unix",
 	"ensure_newline_at_eof_on_save": true,
-	"font_size": 12,
+	"font_face": "Fantasque Sans Mono",
+	"font_size": 14,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[

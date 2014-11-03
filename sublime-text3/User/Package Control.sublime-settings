@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"Base16 Color Schemes",
 		"Colorsublime",
 		"EditorConfig",
 		"FileDiffs",
@@ -8,6 +9,7 @@
 		"JSON Reindent",
 		"LESS",
 		"PHP-Twig",
+		"Railscasts Extended",
 		"SideBarEnhancements",
 		"SyncedSideBar",
 		"Theme - Flatland",
