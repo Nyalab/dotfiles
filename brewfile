@@ -6,7 +6,7 @@ brew upgrade
 # ça tapine
 brew tap homebrew/dupes
 brew tap homebrew/versions
-brew tap phinze/cask
+brew tap caskroom/cask
 brew tap caskroom/versions
 brew tap caskroom/fonts
 
@@ -14,11 +14,13 @@ brew tap caskroom/fonts
 brew tap josegonzalez/homebrew-php
 
 # la base, posey
+brew install zsh
 brew install git
 brew install node
 brew install brew-cask
 brew install wget
 brew install vim
+brew install heroku-toolbelt
 
 # apps
 brew cask install limechat
