@@ -2,6 +2,8 @@
 
 brew update
 brew upgrade
+brew prune
+brew cleanup
 
 # ça tapine
 brew tap homebrew/dupes
