@@ -23,6 +23,7 @@ brew install brew-cask
 brew install wget
 brew install vim
 brew install heroku-toolbelt
+brew install imagemagick # https://github.com/ggordan/GutterColor#icon-tinting-and-light-color-schemes
 
 # apps
 brew cask install limechat
