@@ -2,7 +2,7 @@
 	"caret_extra_width": 1,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Gutter Color/Tomorrow.gcfix.tmTheme",
+	"color_scheme": "Packages/Base16 Color Schemes/base16-atelierheath.light.tmTheme",
 	"default_line_ending": "unix",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Fantasque Sans Mono",
@@ -12,6 +12,8 @@
 	[
 		"Vintage"
 	],
+	"itg_sidebar_tree_xsmall": true,
+	"itg_small_tabs": true,
 	"line_padding_bottom": -1,
 	"line_padding_top": -1,
 	"open_files_in_new_window": false,
@@ -24,8 +26,8 @@
 	"show_encoding": true,
 	"show_full_path": false,
 	"tab_size": 2,
-	"theme": "Spacegray Light.sublime-theme",
+	"theme": "Orchis Light.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"word_wrap": false
+	"word_wrap": true
 }

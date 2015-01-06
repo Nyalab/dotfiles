@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"42 Headers",
 		"Base16 Color Schemes",
 		"Colorsublime",
 		"EditorConfig",
@@ -10,10 +11,14 @@
 		"JSON Reindent",
 		"LESS",
 		"PHP-Twig",
+		"Pretty JSON",
 		"Railscasts Extended",
 		"SideBarEnhancements",
 		"SyncedSideBar",
 		"Theme - Flatland",
+		"Theme - itg.flat",
+		"Theme - Moka",
+		"Theme - Orchis",
 		"Theme - Spacegray"
 	]
 }
