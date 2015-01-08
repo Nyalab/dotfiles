@@ -1,0 +1,91 @@
+set nocompatible 	  " we want vim not vi
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'evidens/vim-twig'
+
+call vundle#end()
+
+" -- Display
+set title
+set number
+set ruler
+set wrap
+set scrolloff=5		  " lines around cursor
+
+" -- Recherche
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" -- Beep
+set visualbell
+set noerrorbells
+
+" Active le comportement 'habituel' de la touche retour en arriere
+set backspace=indent,eol,start
+
+set hidden
+
+syntax enable
+filetype on
+filetype plugin indent on
+
+" mapping
+let mapleader = ","
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <Leader>n :call NumberToggle()<cr>
+
+set backupdir=
+set directory=
+set nowritebackup
+set noswapfile
+
+" Esc -> ;;
+:imap ;; <Esc>
+:map ;; <Esc>
+
+" NERDTreeTab
+map <Leader>t <plug>NERDTreeTabsToggle<CR>
+
+" CtrlP
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_clear_cache_on_exit = 1
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_map = ''
+nmap <Leader>oo :CtrlP<cr>
+nmap <Leader>of :CtrlPMixed<cr>
+nmap <Leader>ob :CtrlPBuffer<cr>
+nmap <Leader>or :CtrlPMRU<cr>
+
+" Expand %% to dir of current file
+cmap %% <C-R>=expand('%:h').'/'<cr>

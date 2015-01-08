@@ -26,7 +26,12 @@ fi
 # Si .vimrc n'exsite pas, vim fait n'importe quoi sous osx
 if [ ! -f ~/.vimrc ]; then
   ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-  ln -s ~/dotfiles/vim/colors/ ~/.vim/colors
+  mkdir ~/.vim
+  cd ~/.vim
+  ln -s ~/dotfiles/vim/colors/ colors
+  mkdir ~/.vim/bundle
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  cd ~/dotfiles
 fi
 
 if [ ! -f "$HOME/Library/Preferences/com.divisiblebyzero.Spectacle.plist" ]; then

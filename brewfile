@@ -24,6 +24,7 @@ brew install wget
 brew install vim
 brew install heroku-toolbelt
 brew install imagemagick # https://github.com/ggordan/GutterColor#icon-tinting-and-light-color-schemes
+brew install the_silver_searcher
 
 # apps
 brew cask install limechat
@@ -47,6 +48,7 @@ brew cask install firefox
 brew cask install google-chrome
 brew cask install virtualbox
 brew cask install vagrant
+brew cask install vagrant-manager
 brew cask install sequel-pro
 
 #fonts
