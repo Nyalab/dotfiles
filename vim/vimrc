@@ -19,6 +19,7 @@ set number
 set ruler
 set wrap
 set scrolloff=5		  " lines around cursor
+set showcmd
 
 " -- Recherche
 set ignorecase
@@ -82,6 +83,9 @@ let g:ctrlp_clear_cache_on_exit = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_map = ''
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=0 
+let g:ctrlp_max_depth=40
 nmap <Leader>oo :CtrlP<cr>
 nmap <Leader>of :CtrlPMixed<cr>
 nmap <Leader>ob :CtrlPBuffer<cr>
@@ -89,3 +93,17 @@ nmap <Leader>or :CtrlPMRU<cr>
 
 " Expand %% to dir of current file
 cmap %% <C-R>=expand('%:h').'/'<cr>
+
+"" Shared clipboard with the OS
+
+set clipboard=unnamed
+
+"" Spaces/Tabs
+
+set expandtab "Use spaces instead of tabs
+set shiftwidth=2
+set tabstop=2
+
+"" Indentation guides
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
