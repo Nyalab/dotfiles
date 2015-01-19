@@ -6,10 +6,9 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'evidens/vim-twig'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 
@@ -74,11 +73,8 @@ set noswapfile
 :imap ;; <Esc>
 :map ;; <Esc>
 
-" NERDTreeTab
-map <Leader>t <plug>NERDTreeTabsToggle<CR>
-
 " CtrlP
-" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_clear_cache_on_exit = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -107,3 +103,11 @@ set tabstop=2
 "" Indentation guides
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+
+" ack
+let g:ackprg="ag --nocolor --nogroup --column"
+" Place un marqueur et cherche
+nmap <leader>j mA:Ack<space>
+" Place un marqueur et cherche le mot sous le curseur
+nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
+nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
