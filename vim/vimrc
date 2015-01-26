@@ -9,6 +9,9 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'evidens/vim-twig'
 Plugin 'mileszs/ack.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -19,6 +22,7 @@ set ruler
 set wrap
 set scrolloff=5		  " lines around cursor
 set showcmd
+set showmatch
 
 " -- Recherche
 set ignorecase
@@ -34,6 +38,7 @@ set noerrorbells
 set backspace=indent,eol,start
 
 set hidden
+set autoread
 
 syntax enable
 filetype on
@@ -44,6 +49,7 @@ set wildignore+=.git,.svn
 
 " mapping
 let mapleader = ","
+let g:mapleader = ","
 
 map <up> <nop>
 map <down> <nop>
@@ -72,6 +78,8 @@ set directory=
 set nowritebackup
 set noswapfile
 
+set encoding=utf8
+
 " Esc -> ;;
 :imap ;; <Esc>
 :map ;; <Esc>
@@ -84,6 +92,11 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .DS_Store
       \ -g ""'
 nmap <Leader>oo :CtrlP<cr>
+nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+set tags=./tags;,tags;
+let g:easytags_dynamic_files = 1
 
 " Expand %% to dir of current file
 cmap %% <C-R>=expand('%:h').'/'<cr>
@@ -109,3 +122,4 @@ nmap <leader>j mA:Ack<space>
 " Place un marqueur et cherche le mot sous le curseur
 nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
 nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
+

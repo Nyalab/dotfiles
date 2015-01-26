@@ -26,6 +26,7 @@ brew install heroku-toolbelt
 brew install imagemagick # https://github.com/ggordan/GutterColor#icon-tinting-and-light-color-schemes
 brew install the_silver_searcher
 brew install ack
+brew install ctags
 
 # apps
 brew cask install limechat
