@@ -16,8 +16,8 @@ fi
 
 zsh ./zshinstall
 
-source ./brewfile
-source ./osx
+#source ./brewfile
+#source ./osx
 
 if [ ! -f "$HOME/.gitconfig" ]; then
   cd ~
@@ -31,6 +31,12 @@ if [ ! -f ~/.vimrc ]; then
   cd ~
   ln -s ~/dotfiles/vim/vimrc .vimrc
   ln -s ~/dotfiles/vim/vim .vim
+  cd ~/dotfiles
+fi
+
+if [ ! -f "$HOME/.ctags" ]; then
+  cd ~
+  ln -s ~/dotfiles/ctags/ctags .ctags
   cd ~/dotfiles
 fi
 
