@@ -16,23 +16,21 @@ fi
 
 zsh ./zshinstall
 
-#source ./brewfile
-#source ./osx
+source ./brewfile
+source ./osx
 
 if [ ! -f "$HOME/.gitconfig" ]; then
   cd ~
   ln -s ~/dotfiles/git/gitconfig .gitconfig
   ln -s ~/dotfiles/git/git_template .git_template
+  cd ~/dotfiles
 fi
 
 # Si .vimrc n'exsite pas, vim fait n'importe quoi sous osx
 if [ ! -f ~/.vimrc ]; then
-  ln -s ~/dotfiles/vim/vimrc ~/.vimrc
-  mkdir ~/.vim
-  cd ~/.vim
-  ln -s ~/dotfiles/vim/colors/ colors
-  mkdir ~/.vim/bundle
-  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  cd ~
+  ln -s ~/dotfiles/vim/vimrc .vimrc
+  ln -s ~/dotfiles/vim/vim .vim
   cd ~/dotfiles
 fi
 
