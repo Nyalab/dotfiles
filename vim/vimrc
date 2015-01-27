@@ -9,8 +9,6 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'evidens/vim-twig'
 Plugin 'mileszs/ack.vim'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
 Plugin 'majutsushi/tagbar'
 
 call vundle#end()
@@ -96,7 +94,6 @@ nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 set tags=./tags;,tags;
-let g:easytags_dynamic_files = 1
 
 " Expand %% to dir of current file
 cmap %% <C-R>=expand('%:h').'/'<cr>
@@ -123,3 +120,4 @@ nmap <leader>j mA:Ack<space>
 nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
 nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
 
+:autocmd BufWritePost * execute '!git ctags &' 
