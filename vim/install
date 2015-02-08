@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ ! -f ~/.vimrc ]; then
+  cd ~
+  ln -s ~/dotfiles/vim/vimrc .vimrc
+  ln -s ~/dotfiles/vim/vim .vim
+  cd ~/dotfiles
+fi
