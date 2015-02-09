@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -f ~/.agignore ]; then
+  cd ~
+  ln -s ~/dotfiles/ag/agignore .agignore
+  cd ~/dotfiles
+fi
