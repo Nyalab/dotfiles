@@ -83,13 +83,14 @@ set encoding=utf8
 :map ;; <Esc>
 
 " CtrlP
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --follow
       \ -U
       \ --ignore .git
       \ --ignore .svn
       \ --ignore .hg
       \ --ignore .DS_Store
       \ -g ""'
+let g:ctrlp_clear_cache_on_exit = 1
 nmap <Leader>oo :CtrlP<cr>
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <silent> <Leader>b :TagbarToggle<CR>

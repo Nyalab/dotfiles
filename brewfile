@@ -44,6 +44,7 @@ brew cask install subtitles
 brew cask install xquartz
 
 # web dev tavu
+brew cask install atom
 brew cask install sublime-text3
 brew cask install firefox-nightly
 brew cask install firefox

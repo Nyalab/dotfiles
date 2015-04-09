@@ -2,32 +2,25 @@
 	"in_process_packages":
 	[
 	],
-	"installed_dependencies":
-	[
-		"0_package_control_loader",
-		"bz2"
-	],
 	"installed_packages":
 	[
-		"42 Headers",
+		"AdvancedNewFile",
+		"Babel",
 		"Base16 Color Schemes",
-		"Colorsublime",
+		"CSS3",
+		"EasyMotion",
 		"EditorConfig",
 		"FileDiffs",
-		"Gutter Color",
-		"Jade",
-		"JSON Reindent",
+		"GitGutter",
+		"Inline Google Translate",
+		"JavaScriptNext - ES6 Syntax",
 		"LESS",
+		"Oceanic Next Color Scheme",
 		"Package Control",
 		"PHP-Twig",
-		"Pretty JSON",
-		"Railscasts Extended",
 		"SideBarEnhancements",
 		"SyncedSideBar",
 		"Theme - Flatland",
-		"Theme - itg.flat",
-		"Theme - Moka",
-		"Theme - Orchis",
 		"Theme - Spacegray"
 	]
 }

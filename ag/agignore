@@ -1,1 +1,22 @@
-app/cache
+# general stuff
+*.sql
+*.tags*
+*.csv
+*.tmp*
+*.old
+*.pdf
+*.log
+
+# symfony stuff
+/app/cache/*
+/app/logs/*
+/web/bundles/
+/web/uploads/
+
+# node stuff
+pids
+*.pid
+*.seed
+node_modules
+logs
+*.log

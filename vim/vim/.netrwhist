@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/sbalayn/dev/overblog/Admin/vendor/overblog'
-let g:netrw_dirhist_2='/Users/sbalayn/dev/overblog/Admin/vendor'
-let g:netrw_dirhist_3='/Users/sbalayn/dev/overblog/Admin'
-let g:netrw_dirhist_4='/Users/sbalayn/dev/overblog'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/sbalayn/dev/overblog/Admin/src/Overblog/FrontBundle/Resources/views'
+let g:netrw_dirhist_2='/Users/sbalayn/dev/overblog/Admin/src/Overblog/FrontBundle/Resources'
+let g:netrw_dirhist_3='/Users/sbalayn/dev/overblog/Admin/src/Overblog/FrontBundle'
+let g:netrw_dirhist_4='/Users/sbalayn/dev/overblog/Admin/src/Overblog'
+let g:netrw_dirhist_5='/Users/sbalayn/dev/overblog/Admin/src'
+let g:netrw_dirhist_6='/Users/sbalayn/dev/overblog/Admin'
+let g:netrw_dirhist_7='/Users/sbalayn/dev/overblog/Admin/src/Overblog/FrontBundle'
