@@ -2,7 +2,7 @@
 	"caret_extra_width": 1,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Base16 Color Schemes/base16-default.light.tmTheme",
+	"color_scheme": "Packages/Inspired GitHub Color Scheme/GitHub.tmTheme",
 	"default_line_ending": "unix",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Fantasque Sans Mono",
@@ -10,8 +10,8 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"CSS"
+		"CSS",
+		"Vintage"
 	],
 	"index_exclude_patterns":
 	[
