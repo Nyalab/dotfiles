@@ -32,10 +32,3 @@ if [ ! -f "$HOME/.ctags" ]; then
   ln -s ~/dotfiles/ctags/ctags .ctags
   cd ~/dotfiles
 fi
-
-if [ ! -f "$HOME/Library/Preferences/com.divisiblebyzero.Spectacle.plist" ]; then
-  ln -s ~/dotfiles/spectacle/com.divisiblebyzero.Spectacle.plist ~/Library/Preferences/com.divisiblebyzero.Spectacle.plist
-else
-  rm ~/Library/Preferences/com.divisiblebyzero.Spectacle.plist
-  ln -s ~/dotfiles/spectacle/com.divisiblebyzero.Spectacle.plist ~/Library/Preferences/com.divisiblebyzero.Spectacle.plist
-fi
