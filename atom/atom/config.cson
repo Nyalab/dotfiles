@@ -1,0 +1,37 @@
+"*":
+  editor:
+    invisibles: {}
+    fontSize: 14
+    fontFamily: "Fantasque Sans Mono"
+    softWrap: true
+  core:
+    themes: [
+      "one-light-ui"
+      "base16-tomorrow-light-theme"
+    ]
+    disabledPackages: [
+      "welcome"
+      "metrics"
+      "exception-reporting"
+      "background-tips"
+      "php-twig"
+      "autocomplete"
+    ]
+    audioBeep: false
+    followSymlinks: true
+  "project-manager": {}
+  "css-color-highlight": {}
+  react: {}
+  "gist-it": {}
+  "autocomplete-plus":
+    confirmCompletion: "tab and enter"
+    backspaceTriggersAutocomplete: false
+    suggestionListFollows: "Cursor"
+  "git-blame": {}
+  "git-log": {}
+  "merge-conflicts": {}
+  linter: {}
+  "linter-eslint": {}
+  docblockr: {}
+  "close-tags": {}
+  "atom-color-highlight": {}
