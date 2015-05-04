@@ -1,3 +1,6 @@
+// TODO: remove this fallback when 193 is out for a while
+.attr-syntax-color() { @syntax-color-attribute: #888; } .attr-syntax-color();
+
 @import "ui-variables";
 @import "syntax-variables";
 
@@ -32,6 +35,9 @@ autocomplete-suggestion-list.select-list.popover-list {
 
     background: darken(@overlay-background-color, 4%);
     border-radius: 0 0 @component-border-radius @component-border-radius;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .suggestion-description-content {
@@ -170,6 +176,7 @@ autocomplete-suggestion-list {
     color: @text-color-subtle;
   }
 
+  .make-type-icon(attribute, @syntax-color-attribute);
   .make-type-icon(builtin, @syntax-color-keyword);
   .make-type-icon(class, @syntax-color-class);
   .make-type-icon(constant, @syntax-color-constant);

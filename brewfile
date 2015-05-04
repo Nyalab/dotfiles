@@ -38,7 +38,6 @@ brew cask install spectacle
 
 # trop un pirateur tavu
 brew cask install vlc
-brew cask install subtitles
 
 # required by some updates for brew
 brew cask install xquartz
@@ -54,6 +53,7 @@ brew cask install vagrant
 brew cask install vagrant-manager
 brew cask install sequel-pro
 brew cask install hipchat
+brew cask install komanda
 
 #fonts
 brew cask install font-roboto

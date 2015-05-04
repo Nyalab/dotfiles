@@ -1,3 +1,8 @@
+<div class='alert alert-danger'>
+This package is no longer maintained as it is now replaced by the [pigments package](https://atom.io/packages/pigments).
+<br/>If both packages are installed this package will not activate.
+</div>
+
 # Atom Color Highlight [![Build Status](https://travis-ci.org/abe33/atom-color-highlight.svg?branch=master)](https://travis-ci.org/abe33/atom-color-highlight)
 
 Highlights colors in files.
@@ -53,7 +58,7 @@ The `markers` array contains the display buffer markers for all the colors found
 To target the classical markers, use the following rule:
 
 ```less
-atom-text-edidor, atom-text-editor::shadow {
+atom-text-editor, atom-text-editor::shadow {
   atom-color-highlight color-marker .region {
     // ...
   }
@@ -63,7 +68,7 @@ atom-text-edidor, atom-text-editor::shadow {
 And to target the dot marker at end of lines, use the following rule:
 
 ```less
-atom-text-edidor, atom-text-editor::shadow {
+atom-text-editor, atom-text-editor::shadow {
   atom-color-highlight dot-color-marker {
     // ...
   }

@@ -26,6 +26,12 @@ if [ ! -f "$HOME/.gitconfig" ]; then
   cd ~/dotfiles
 fi
 
+if [ ! -f "$HOME/.atom" ]; then
+  cd ~
+  ln -s ~/dotfiles/atom/atom .atom
+  cd ~/dotfiles
+fi
+
 
 if [ ! -f "$HOME/.ctags" ]; then
   cd ~
