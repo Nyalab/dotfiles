@@ -21,3 +21,5 @@ fi
 alias fuck='sudo $(history -p \!\!)'
 # added by travis gem
 [ -f /Users/sbalayn/.travis/travis.sh ] && source /Users/sbalayn/.travis/travis.sh
+export NVM_DIR=~/.nvm
+source /usr/local/opt/nvm/nvm.sh

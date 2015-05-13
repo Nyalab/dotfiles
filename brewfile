@@ -27,6 +27,13 @@ brew install imagemagick # https://github.com/ggordan/GutterColor#icon-tinting-a
 brew install the_silver_searcher
 brew install ack
 brew install ctags
+brew install nvm
+mkdir $HOME/.nvm
+cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+echo "export NVM_DIR=~/.nvm" >> ~/.zshrc
+echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc # need to do it in another session
+nvm install iojs
+nvm alias default iojs
 
 # apps
 brew cask install limechat
