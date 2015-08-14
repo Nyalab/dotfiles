@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -f ~/.hammerspoon ]; then
+  cd ~
+  ln -s ~/dotfiles/hammerspoon/config .hammerspoon
+  cd ~/dotfiles
+fi
