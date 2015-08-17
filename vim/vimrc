@@ -11,6 +11,7 @@ Plugin 'evidens/vim-twig'
 Plugin 'mileszs/ack.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'edsono/vim-matchit'
 
 call vundle#end()
 
