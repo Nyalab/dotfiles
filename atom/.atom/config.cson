@@ -10,4 +10,5 @@
     ]
   editor:
     invisibles: {}
+    fontSize: 13
   "one-dark-ui": {}
