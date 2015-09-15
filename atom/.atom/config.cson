@@ -12,6 +12,7 @@
     invisibles: {}
     fontFamily: "Fantasque Sans Mono"
     showInvisibles: true
+    fontSize: 13
   "one-dark-ui": {}
   "todo-show": {}
   "autocomplete-plus": {}
