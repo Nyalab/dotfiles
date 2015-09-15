@@ -12,6 +12,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'edsono/vim-matchit'
+Plugin 'joeytwiddle/sexy_scroller.vim'
 
 call vundle#end()
 
