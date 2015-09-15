@@ -6,9 +6,21 @@
   core:
     themes: [
       "one-light-ui"
-      "atom-light-syntax"
+      "base16-tomorrow-light-theme"
     ]
   editor:
     invisibles: {}
-    fontSize: 13
+    fontFamily: "Fantasque Sans Mono"
+    showInvisibles: true
   "one-dark-ui": {}
+  "todo-show": {}
+  "autocomplete-plus": {}
+  "tree-view": {}
+  tabs:
+    enableVcsColoring: true
+  "status-bar": {}
+  "git-diff": {}
+  "fuzzy-finder": {}
+  "clipboard-plus": {}
+  "toggle-quotes": {}
+  "one-light-ui": {}

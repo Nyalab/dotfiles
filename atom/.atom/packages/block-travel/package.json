@@ -1,0 +1,37 @@
+{
+  "name": "block-travel",
+  "version": "1.0.2",
+  "main": "./lib/block-travel",
+  "description": "Quickly travel up/down between blocks of code",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leejarvis/block-travel.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "readme": "# Block travel package\n\nBlock travel uses empty lines to travel quickly\nthrough blocks of code.\n\n* `alt-up` to travel up through blocks of code\n* `alt-down` to travel down through blocks of code\n* `alt-shift-up` to travel and select up through blocks of code\n* `alt-shift-down` to travel and select down through blocks of code\n\n![](http://f.cl.ly/items/422j0z3O2l3G013f040o/block-travel.gif)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/leejarvis/block-travel/issues"
+  },
+  "homepage": "https://github.com/leejarvis/block-travel#readme",
+  "_id": "block-travel@1.0.2",
+  "_shasum": "a8982ddbfbed1e0cff3847ab3972c0673284b472",
+  "_resolved": "file:../d-115815-11062-1a15j13/package.tgz",
+  "_from": "../d-115815-11062-1a15j13/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/block-travel.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
