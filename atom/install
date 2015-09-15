@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -f "$HOME/.atom" ]; then
+  cd ~
+  ln -s ~/dotfiles/atom/.atom .atom
+  cd ~/dotfiles
+fi
