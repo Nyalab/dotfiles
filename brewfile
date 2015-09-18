@@ -43,6 +43,8 @@ brew cask install spotify
 brew cask install cloud
 brew cask install hammerspoon
 brew cask install iterm2
+brew cask install grandperspective
+brew cask install postico
 
 # trop un pirateur tavu
 brew cask install vlc

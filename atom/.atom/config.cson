@@ -8,6 +8,7 @@
       "one-light-ui"
       "base16-tomorrow-light-theme"
     ]
+    excludeVcsIgnoredPaths: false
   editor:
     invisibles: {}
     fontFamily: "Fantasque Sans Mono"
@@ -25,3 +26,5 @@
   "clipboard-plus": {}
   "toggle-quotes": {}
   "one-light-ui": {}
+  jumpy: {}
+  "language-babel": {}
