@@ -1,0 +1,11 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Line Length Break'
+      'submenu': [
+        { 'label': 'Break', 'command': 'line-length-break:break' }
+      ]
+    ]
+  }
+]

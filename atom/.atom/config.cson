@@ -6,20 +6,47 @@
   core:
     themes: [
       "one-light-ui"
-      "base16-tomorrow-light-theme"
+      "duotone-light-syntax"
     ]
     excludeVcsIgnoredPaths: false
+    disabledPackages: [
+      "activate-power-mode"
+      "smart-tab-name"
+      "file-icons"
+      "language-javascript-jsx"
+    ]
   editor:
     invisibles: {}
-    fontFamily: "Fantasque Sans Mono"
     showInvisibles: true
     fontSize: 13
+    lineHeight: 1.4
+    fontFamily: "Fira Code"
   "one-dark-ui": {}
-  "todo-show": {}
+  "todo-show":
+    findTheseRegexes: [
+      "FIXMEs"
+      "/\\bFIXME:?\\d*($|\\s?.*$)/g"
+      "TODOs"
+      "/\\bTODO:?\\d*($|\\s?.*$)/g"
+      "CHANGEDs"
+      "/\\bCHANGED:?\\d*($|\\s?.*$)/g"
+      "XXXs"
+      "/\\bXXX:?\\d*($|\\s?.*$)/g"
+      "IDEAs"
+      "/\\bIDEA:?\\d*($|\\s?.*$)/g"
+      "HACKs"
+      "/\\bHACK:?\\d*($|\\s?.*$)/g"
+      "NOTEs"
+      "/\\bNOTE:?\\d*($|\\s?.*$)/g"
+      "REVIEWs"
+      "/\\bREVIEW:?\\d*($|\\s?.*$)/g"
+    ]
+    sortBy: "File"
   "autocomplete-plus": {}
   "tree-view": {}
   tabs:
     enableVcsColoring: true
+    usePreviewTabs: true
   "status-bar": {}
   "git-diff": {}
   "fuzzy-finder": {}
@@ -28,3 +55,12 @@
   "one-light-ui": {}
   jumpy: {}
   "language-babel": {}
+  "file-icons":
+    onChanges: true
+  "smart-tab-name": {}
+  "git-log": {}
+  react: {}
+  "tool-bar":
+    position: "Left"
+    iconSize: "16px"
+  "flex-tool-bar": {}

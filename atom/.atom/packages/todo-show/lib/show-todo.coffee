@@ -1,14 +1,14 @@
 {CompositeDisposable} = require 'atom'
-url = require 'url'
 
-ShowTodoView = require './show-todo-view'
+ShowTodoView = require './todo-view'
+TodoCollection = require './todo-collection'
 
 module.exports =
   config:
-    # Title, regex, title, regex...
     findTheseRegexes:
       type: 'array'
-      # Based on https://github.com/atom/language-todo
+      # Items based on https://github.com/atom/language-todo
+      # Title, regex, title, regex...
       default: [
         'FIXMEs'
         '/\\bFIXME:?\\d*($|\\s.*$)/g'
@@ -29,46 +29,66 @@ module.exports =
       ]
       items:
         type: 'string'
-    # Ignore filter using node-ignore
     ignoreThesePaths:
       type: 'array'
       default: [
-        '*/node_modules/'
-        '*/vendor/'
-        '*/bower_components/'
+        '**/node_modules/'
+        '**/vendor/'
+        '**/bower_components/'
       ]
       items:
         type: 'string'
-    # Split direction to open list
+    showInTable:
+      type: 'array'
+      default: [
+        'Text',
+        'Type',
+        'File'
+      ]
+    sortBy:
+      type: 'string'
+      default: 'Text'
+      enum: ['All', 'Text', 'Type', 'Range', 'Line', 'Regex', 'File', 'Tags']
+    sortAscending:
+      type: 'boolean'
+      default: true
     openListInDirection:
       type: 'string'
       default: 'right'
       enum: ['up', 'right', 'down', 'left', 'ontop']
-    # Change list grouping / sorting
-    groupMatchesBy:
-      type: 'string'
-      default: 'regex'
-      enum: ['regex', 'file', 'none']
-    # Persist pane width / height
     rememberViewSize:
       type: 'boolean'
       default: true
+    saveOutputAs:
+      type: 'string'
+      default: 'List'
+      enum: ['List', 'Table']
+
+  URI:
+    full: 'atom://todo-show/todos'
+    open: 'atom://todo-show/open-todos'
+    active: 'atom://todo-show/active-todos'
 
   activate: ->
+    collection = new TodoCollection
+    collection.setAvailableTableItems(@config.sortBy.enum)
+
     @disposables = new CompositeDisposable
     @disposables.add atom.commands.add 'atom-workspace',
-      'todo-show:find-in-project': => @show('todolist-preview:///TODOs')
-      'todo-show:find-in-open-files': => @show('todolist-preview:///Open-TODOs')
+      'todo-show:find-in-project': => @show(@URI.full)
+      'todo-show:find-in-open-files': => @show(@URI.open)
 
     # Register the todolist URI, which will then open our custom view
-    @disposables.add atom.workspace.addOpener (uriToOpen) ->
-      {protocol, host, pathname} = url.parse(uriToOpen)
-      pathname = decodeURI(pathname) if pathname
-      return unless protocol is 'todolist-preview:'
-      new ShowTodoView(filePath: pathname).getTodos()
+    @disposables.add atom.workspace.addOpener (uriToOpen) =>
+      scope = switch uriToOpen
+        when @URI.full then 'full'
+        when @URI.open then 'open'
+        when @URI.active then 'active'
+      if scope
+        collection.setSearchScope(scope)
+        new ShowTodoView(collection, uriToOpen)
 
   deactivate: ->
-    @paneDisposables?.dispose()
     @disposables?.dispose()
 
   destroyPaneItem: ->
@@ -91,5 +111,5 @@ module.exports =
     else if direction is 'up'
       prevPane.splitUp() if prevPane.parent.orientation isnt 'vertical'
 
-    atom.workspace.open(uri, split: direction).done (@showTodoView) =>
+    atom.workspace.open(uri, split: direction).then (@showTodoView) =>
       prevPane.activate()

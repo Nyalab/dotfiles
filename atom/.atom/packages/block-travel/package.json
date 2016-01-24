@@ -1,6 +1,6 @@
 {
   "name": "block-travel",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "./lib/block-travel",
   "description": "Quickly travel up/down between blocks of code",
   "repository": {
@@ -17,10 +17,10 @@
     "url": "https://github.com/leejarvis/block-travel/issues"
   },
   "homepage": "https://github.com/leejarvis/block-travel#readme",
-  "_id": "block-travel@1.0.2",
-  "_shasum": "a8982ddbfbed1e0cff3847ab3972c0673284b472",
-  "_resolved": "file:../d-115815-11062-1a15j13/package.tgz",
-  "_from": "../d-115815-11062-1a15j13/package.tgz",
+  "_id": "block-travel@1.0.4",
+  "_shasum": "fa45cd67408af7c4a3cc13516d9d052eb13aff01",
+  "_resolved": "file:../d-1151118-50694-iqcsjc/package.tgz",
+  "_from": "../d-1151118-50694-iqcsjc/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

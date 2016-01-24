@@ -1,0 +1,75 @@
+{
+  "name": "smart-tab-name",
+  "main": "./lib/main",
+  "version": "1.0.5",
+  "description": "Provide smart tab names",
+  "keywords": [
+    "tabs",
+    "tab",
+    "path",
+    "filename",
+    "name"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoOx/atom-smart-tab-name.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-simple-logger": "~0.0.1"
+  },
+  "dev-dependencies": {
+    "atom-package-reloader": "~0.0.2"
+  },
+  "devDependencies": {},
+  "readme": "# [smart-tab-name](https://atom.io/packages/smart-tab-name)\n\n> Provide smarter tab names form Atom editor.\n\nUseful when you have some files with the same basename name.  \nAuto adjust paths if you have multiples folders in the same window to bring\nyou some context.\n`index` filenames will be grayed.\n\n## Preview\n\n### One folder preview\n\n![screenshot](https://github.com/MoOx/atom-smart-tab-name/raw/master/screenshots/one-folder.png)\n\n### Multiples folder preview\n\n![screenshot](https://github.com/MoOx/atom-smart-tab-name/raw/master/screenshots/multiples-projects.png)\n\n## [CHANGELOG](CHANGELOG.md)\n\n## [License](LICENSE.md)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/MoOx/atom-smart-tab-name/issues"
+  },
+  "homepage": "https://github.com/MoOx/atom-smart-tab-name#readme",
+  "_id": "smart-tab-name@1.0.5",
+  "_shasum": "3876bee72a6c8b452d4fdf90d3677e7fb958ec91",
+  "_resolved": "file:../d-1151118-50715-1qwalza/package.tgz",
+  "_from": "../d-1151118-50715-1qwalza/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "atom-simple-logger",
+        "version": "0.0.1",
+        "path": "node_modules/atom-simple-logger/lib/index.js"
+      }
+    ],
+    "extensions": {
+      ".js": [
+        "lib/index.js",
+        "node_modules/atom-simple-logger/lib/index.js"
+      ],
+      ".coffee": [
+        "lib/main.coffee",
+        "lib/smart-tab-name.coffee",
+        "node_modules/atom-simple-logger/src/index.coffee"
+      ],
+      ".json": [
+        "node_modules/atom-simple-logger/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "atom-simple-logger": "~0.0.1"
+        }
+      }
+    ]
+  }
+}
