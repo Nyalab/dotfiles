@@ -1,0 +1,8 @@
+{
+  "platform": "osx",
+  "colors": {
+    "command-background": "white",
+    "command-foreground": "magenta",
+    "command-token": "red"
+  }
+}

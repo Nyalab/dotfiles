@@ -1,0 +1,9 @@
+#!/bin/sh
+
+npm install -g tldr
+
+if [ ! -f ~/.tldrrc ]; then
+  cd ~
+  ln -s ~/dotfiles/tldr/tldrrc .tldrrc
+  cd ~/dotfiles
+fi

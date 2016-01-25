@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/gandm/language-babel.svg?branch=master)](https://travis-ci.org/gandm/language-babel)
 [![Build Dependencies](https://david-dm.org/gandm/language-babel.svg)](https://david-dm.org/gandm/language-babel)
 
-Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion of React JSX tags and optional Babel transpilation on file saves.
+Language grammar for ES201x JavaScript, [Facebook React JSX](http://facebook.github.io/react/index.html) syntax and [Facebook flow](http://flowtype.org/). The colour of syntax is determined by the theme in use. The package also provides auto completion and auto reformatting of React JSX tags based upon [ESLint rules](https://github.com/yannickcr/eslint-plugin-react) and optional Babel transpilation output on file saves. As a convenience it also provides a transpiled code preview option by linking to the package [source-preview](https://atom.io/packages/source-preview).
 
 By default the language-babel package will detect file types `.js`,`.babel`,`.jsx`, `.flow` and `es6`. Use the standard ATOM interface to enable it for other file types. This provides a grammar that scopes the file in order to colour the text in a meaningful way. If other JavaScript grammars are enabled these may take precedence over language-babel. Look at the bottom right status bar indicator to determine the language grammar of a file being edited. language-babel will be shown as `Babel ES6 JavaScript`
 
@@ -13,7 +13,46 @@ language-babel provides [Babel](http://babeljs.io/) V6 & V5 transpiler support. 
 
 Install via ATOM or by using `apm install language-babel`. If you only need to use the provided grammar read no further!
 
+## Auto Completion of JSX tags, elements and attributes
+
+JSX tag closures are provided as auto complete options. In addition common HTML elements and their associated properties are displayed as auto complete lists. Those supported by language-babel are described [here](http://facebook.github.io/react/docs/tags-and-attributes.html)
+
+![autoclose](https://cloud.githubusercontent.com/assets/2313237/12352348/218348b6-bb7d-11e5-9245-bd0d1467d71d.gif)
+
+## Commenting out JSX elements
+
+JSX elements cannot be commented out by using standard `//` or `/* */` commenting. Normally `{/* */}` is used instead. language-babel changes the Atom toggle comments behaviour when inside a JSX block to support this behaviour.
+
+![autoclose](https://cloud.githubusercontent.com/assets/2313237/12441752/4d672be6-bf42-11e5-8e20-33a96a81db66.gif)
+
+## Automatic Indenting of JSX
+
+By default this feature is turned off in the package settings. If enabled, language-babel will read the `.eslintrc` file associated with an edited file's project for the presence of three properties whose defaults are shown below. These rules, which are part of the [ESLint-plugin-React](https://github.com/yannickcr/eslint-plugin-react) EsLint plugin, are then used to determine the alignment and tab/spaces spacing of JSX elements. If no `.eslintrrc` file is found then the suitable defaults are used based upon the tab/spacing setup of the Atom editor. For more information on the options for these rules see [Closing bracket](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md), [Indent](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md) and [Indent Props](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md).
+
+```json
+{
+  "rules": {
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-indent-props": 1,
+    "react/jsx-indent": 1
+  }
+}
+```
+When typing occurs within a JSX block language-babel intercepts new line return entries and reformats the preceding JSX lines automatically. Optionally, a command `language-babel:auto-indent-react-jsx` allows text to be automatically indented on the current and preceding rows. Line following the cursor are not indented. This is to protect the source code following incomplete JSX from being processed. This can be mapped as a keyboard shortcut if required.
+
+There is also a command - `language-babel:toggle-auto-indent-jsx` that toggles automatic JSX formatting on/off for individual files.
+
+You may also turn off automatic indenting for files by setting the package option `Auto Indent JSX`
+
+![reformat](https://cloud.githubusercontent.com/assets/2313237/12352494/63f034b0-bb7e-11e5-8317-84b1db470148.gif)
+
 ## Interface to Babel V6 & V5
+
+#### Transpiling
+![example](https://cloud.githubusercontent.com/assets/2313237/11145720/18bf0f52-8a00-11e5-82f0-3f474aeefcb7.gif)
+
+#### Previewing
+![example](https://cloud.githubusercontent.com/assets/2313237/12490818/7535fc50-c06f-11e5-8752-ec0878c5205c.gif)
 
 Options in the language-babel package settings and/or in `.languagebabel` project based JSON files allow for Babel validations to be carried out on a file saves using `.babelrc` options. Even if using a workflow such as gulp, webpack, etc, this can be very useful. Additional options allow the output from Babel (transpiled code and maps ) to be output to other directories.
 
@@ -136,6 +175,9 @@ For most projects it is better to configure `language-babel` via project based `
   {"createTargetDirectories": true} or
   {"createTargetDirectories": false}
   ```
+
+* #### Auto Indent JSX
+  Enables automatic indenting of JSX.
 
 ## .languagebabel Configuration
 
