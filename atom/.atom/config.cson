@@ -1,27 +1,43 @@
 "*":
-  "exception-reporting":
-    userId: "6ea75670-e291-1815-555b-95ba4967dd73"
-  welcome:
-    showOnStartup: false
+  "autocomplete-plus": {}
+  "clipboard-plus": {}
   core:
-    themes: [
-      "one-light-ui"
-      "duotone-light-syntax"
-    ]
-    excludeVcsIgnoredPaths: false
     disabledPackages: [
       "activate-power-mode"
       "smart-tab-name"
       "file-icons"
       "language-javascript-jsx"
     ]
+    excludeVcsIgnoredPaths: false
+    themes: [
+      "one-light-ui"
+      "duotone-light-syntax"
+    ]
+  docblockr: {}
   editor:
-    invisibles: {}
-    showInvisibles: true
-    fontSize: 13
-    lineHeight: 1.4
     fontFamily: "Fira Code"
+    fontSize: 13
+    invisibles: {}
+    lineHeight: 1.4
+    showInvisibles: true
+  "exception-reporting":
+    userId: "6ea75670-e291-1815-555b-95ba4967dd73"
+  "file-icons":
+    onChanges: true
+  "flex-tool-bar": {}
+  "fuzzy-finder": {}
+  "git-diff": {}
+  "git-log": {}
+  jumpy: {}
+  "language-babel": {}
   "one-dark-ui": {}
+  "one-light-ui": {}
+  react: {}
+  "smart-tab-name": {}
+  "status-bar": {}
+  tabs:
+    enableVcsColoring: true
+    usePreviewTabs: true
   "todo-show":
     findTheseRegexes: [
       "FIXMEs"
@@ -42,25 +58,10 @@
       "/\\bREVIEW:?\\d*($|\\s?.*$)/g"
     ]
     sortBy: "File"
-  "autocomplete-plus": {}
-  "tree-view": {}
-  tabs:
-    enableVcsColoring: true
-    usePreviewTabs: true
-  "status-bar": {}
-  "git-diff": {}
-  "fuzzy-finder": {}
-  "clipboard-plus": {}
   "toggle-quotes": {}
-  "one-light-ui": {}
-  jumpy: {}
-  "language-babel": {}
-  "file-icons":
-    onChanges: true
-  "smart-tab-name": {}
-  "git-log": {}
-  react: {}
   "tool-bar":
-    position: "Left"
     iconSize: "16px"
-  "flex-tool-bar": {}
+    position: "Left"
+  "tree-view": {}
+  welcome:
+    showOnStartup: false

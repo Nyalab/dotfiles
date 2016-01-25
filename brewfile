@@ -62,8 +62,8 @@ brew cask install virtualbox
 brew cask install vagrant
 brew cask install vagrant-manager
 brew cask install sequel-pro
-brew cask install hipchat
-brew cask install komanda
+brew cask install slack
+brew cask install soundnode
 
 #fonts
 brew cask install font-roboto

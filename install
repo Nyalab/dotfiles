@@ -17,6 +17,7 @@ fi
 zsh ./zshinstall
 
 source ./brewfile
+echo "don't forget to install tweetbot, microsoft remote desktop"
 source ./osx
 
 if [ ! -f "$HOME/.gitconfig" ]; then
