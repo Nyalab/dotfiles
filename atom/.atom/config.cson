@@ -1,4 +1,31 @@
 "*":
+  "advanced-open-file":
+    createDirectories: true
+    fuzzyMatch: true
+    helmDirSwitch: true
+  "atom-material-ui":
+    colors:
+      abaseColor:
+        alpha: 1
+        blue: 51
+        green: 51
+        red: 204
+      accentColor:
+        alpha: 1
+        blue: 247
+        green: 247
+        red: 247
+      predefinedColor: "Red"
+    fonts: {}
+    tabs:
+      compactTabs: true
+      tintedTabBar: true
+    treeView:
+      blendTabs: true
+      compactList: true
+    ui:
+      panelContrast: true
+      panelShadows: true
   "autocomplete-plus": {}
   "clipboard-plus": {}
   core:
@@ -6,17 +33,16 @@
       "activate-power-mode"
       "smart-tab-name"
       "file-icons"
-      "language-javascript-jsx"
+      "react"
+      "atom-nude-pic"
     ]
-    excludeVcsIgnoredPaths: false
     themes: [
-      "one-light-ui"
-      "duotone-light-syntax"
+      "one-dark-ui"
+      "base16-tomorrow-dark-theme"
     ]
   docblockr: {}
   editor:
-    fontFamily: "Fira Code"
-    fontSize: 13
+    fontFamily: "Fantasque Sans Mono"
     invisibles: {}
     lineHeight: 1.4
     showInvisibles: true
@@ -25,13 +51,24 @@
   "file-icons":
     onChanges: true
   "flex-tool-bar": {}
+  fonts:
+    fontFamily: "FiraCode"
+    preview: "=>"
   "fuzzy-finder": {}
+  "gist-it":
+    newGistsDefaultToPrivate: true
+    openAfterCreate: true
+    userToken: "f3118c2b5baf4ca3d1fd4b120f14e56a2c478f6f"
   "git-diff": {}
   "git-log": {}
   jumpy: {}
   "language-babel": {}
-  "one-dark-ui": {}
+  "one-dark-ui":
+    fontSize: 12
   "one-light-ui": {}
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
   react: {}
   "smart-tab-name": {}
   "status-bar": {}
@@ -62,6 +99,11 @@
   "tool-bar":
     iconSize: "16px"
     position: "Left"
-  "tree-view": {}
+  "tree-view":
+    autoReveal: true
+    focusOnReveal: false
+    showOnRightSide: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
+  wrap: {}

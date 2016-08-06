@@ -4,7 +4,9 @@ import stdPath from 'path';
 import temp from 'temp'; temp.track();
 
 import $ from 'jquery';
+import mkdirp from 'mkdirp';
 import osenv from 'osenv';
+import touch from 'touch';
 
 import {provideEventService} from '../lib/advanced-open-file';
 import {
@@ -223,6 +225,15 @@ describe('Functional tests', () => {
 
             addProjectFolderButton.click();
             expect(atom.project.getPaths()).toEqual([fixturePath('examples')]);
+
+            // Do not open folder when clicking.
+            expect(currentPath()).toEqual(fixturePath() + path.sep);
+
+            // Remove button when clicked.
+            addProjectFolderButton = ui.find(
+                '.list-item[data-file-name$=\'examples\'] .add-project-folder'
+            );
+            expect(addProjectFolderButton.length).toEqual(0);
         });
 
         it(`does not show the add-project-folder button for folders that are
@@ -350,6 +361,11 @@ describe('Functional tests', () => {
             atom.config.set('advanced-open-file.helmDirSwitch', true);
             setPath(fixturePath('subdir') + stdPath.sep + stdPath.sep);
             expect(currentPath()).toEqual(fsRoot);
+
+            // When the rest of path is empty, some platforms (Windows mainly)
+            // can't infer a drive letter, so we can't use fsRoot from above.
+            // Instead, we'll use the root of the path we're testing.
+            fsRoot = new Path(stdPath.sep + stdPath.sep).root().full;
 
             // Also test when the rest of the path is empty.
             setPath(stdPath.sep + stdPath.sep);
@@ -589,6 +605,31 @@ describe('Functional tests', () => {
                 ]));
                 expect(atom.workspace.getPanes().length).toEqual(2);
             });
+        });
+
+        it(`shows an error notification when creating a subdirectory throws an
+            error`, () => {
+            debugger;
+            spyOn(atom.notifications, 'addError');
+            spyOn(mkdirp, 'sync').andCallFake(() => {
+                throw new Error('OH NO');
+            });
+            setPath(fixturePath('examples', 'noPermission', 'subdir', 'file.txt'));
+            dispatch('core:confirm');
+            expect(atom.notifications.addError).toHaveBeenCalled();
+        });
+
+        it(`shows an error notification when creating a file in a directory
+            throws an error`, () => {
+            spyOn(atom.notifications, 'addError');
+            spyOn(touch, 'sync').andCallFake(() => {
+                throw new Error('OH NO');
+            });
+            atom.config.set('advanced-open-file.createFileInstantly', true);
+
+            setPath(fixturePath('examples', 'noPermission', 'file.txt'));
+            dispatch('core:confirm');
+            expect(atom.notifications.addError).toHaveBeenCalled();
         });
     });
 

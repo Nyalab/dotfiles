@@ -1,5 +1,9 @@
+### global
+atom
+jasmine describe xdescribe beforeEach afterEach it runs expect waitsFor
+waitsForPromise
+###
 path = require 'path'
-{Views, Commands} = require 'atom'
 {$} = require 'space-pen'
 
 
@@ -15,15 +19,14 @@ NUM_TOTAL_WORDS =
 
 NUM_CAMEL_SPECIFIC_MATCHES = 4 + 5 + 3
 
-getLabelsArrayFromAllEditors = ->
-    labels = []
+getDecorationsArrayFromAllEditors = ->
+    decorations = []
     atom.workspace.observeTextEditors (editor) ->
         currentTextEditorElement = atom.views.getView(editor)
         return if $(currentTextEditorElement).is ':not(:visible)'
 
-        labels = labels.concat([].slice.call(
-            currentTextEditorElement.shadowRoot.querySelectorAll('.jumpy.label')))
-    return labels
+        decorations = decorations.concat(editor.getOverlayDecorations())
+    return decorations
 
 # Borrowed from: @lee-dohm
 # Public: Indicates whether an element has a command.
@@ -50,8 +53,10 @@ describe "Jumpy", ->
         # He found it in the wrap-guide.
         workspaceElement.style.height = "5000px" # big enough
         workspaceElement.style.width = "5000px"
-        jasmine.attachToDOM(workspaceElement)
         # TODO: Abstract the following out, (DRY) --------------
+        jumpyPromise = atom.packages.activatePackage 'jumpy'
+        statusBarPromise = atom.packages.activatePackage 'status-bar'
+        jasmine.attachToDOM(workspaceElement)
 
         waitsForPromise ->
             atom.workspace.open 'test_text.md'
@@ -59,8 +64,6 @@ describe "Jumpy", ->
         runs ->
             textEditor = atom.workspace.getActiveTextEditor()
             textEditorElement = atom.views.getView(textEditor)
-            jumpyPromise = atom.packages.activatePackage 'jumpy'
-            statusBarPromise = atom.packages.activatePackage 'status-bar'
             textEditor.setCursorBufferPosition [1,1]
             atom.commands.dispatch textEditorElement, 'jumpy:toggle'
 
@@ -68,6 +71,9 @@ describe "Jumpy", ->
             jumpyPromise
         waitsForPromise ->
             statusBarPromise
+
+    afterEach ->
+        atom.commands.dispatch textEditorElement, 'jumpy:clear'
 
     describe 'activate', ->
         it 'creates the commands', ->
@@ -77,7 +83,7 @@ describe "Jumpy", ->
 
     describe 'deactivate', ->
         beforeEach ->
-            atom.packages.deactivatePackage('jumpy')
+            atom.packages.deactivatePackage 'jumpy'
 
         it 'destroys the commands', ->
             expect(hasCommand(workspaceElement, 'jumpy:toggle')).toBeFalsy()
@@ -86,13 +92,13 @@ describe "Jumpy", ->
 
     describe "when the jumpy:toggle event is triggered", ->
         it "draws correct labels", ->
-            labels = textEditorElement.shadowRoot.querySelectorAll('.jumpy.label')
-            expect(labels.length)
+            decorations = textEditor.getOverlayDecorations()
+            expect(decorations.length)
                 .toBe NUM_TOTAL_WORDS + NUM_CAMEL_SPECIFIC_MATCHES
-            expect(labels[0].innerHTML).toBe 'aa'
-            expect(labels[1].innerHTML).toBe 'ab'
-            expect(labels[82].innerHTML).toBe 'de'
-            expect(labels[83].innerHTML).toBe 'df'
+            expect(decorations[0].getProperties().item.textContent).toBe 'aa'
+            expect(decorations[1].getProperties().item.textContent).toBe 'ab'
+            expect(decorations[82].getProperties().item.textContent).toBe 'de'
+            expect(decorations[83].getProperties().item.textContent).toBe 'df'
         it "clears beacon effect", ->
             expect(textEditorElement.
                 querySelectorAll('cursors .cursor.beacon').length).toBe 0
@@ -102,8 +108,9 @@ describe "Jumpy", ->
     describe "when the jumpy:clear event is triggered", ->
         it "clears labels", ->
             atom.commands.dispatch workspaceElement, 'jumpy:clear'
-            expect(textEditorElement.classList.contains('jumpy-jump-mode')).toBe false
-            expect(textEditorElement.parentElement.querySelectorAll('.jumpy')).toHaveLength 0
+            expect(textEditorElement
+                .classList.contains('jumpy-jump-mode')).toBe false
+            expect(textEditor.getOverlayDecorations()).toHaveLength 0
 
     describe "when the jumpy:toggle event is triggered
     and a click event is fired", ->
@@ -136,12 +143,13 @@ describe "Jumpy", ->
         it "jumpy is cleared", ->
             atom.commands.dispatch workspaceElement, 'jumpy:a'
             atom.commands.dispatch workspaceElement, 'jumpy:c'
-            expect(textEditorElement.classList.contains('jumpy-jump-mode')).toBe false
-            expect(textEditorElement.parentElement.querySelectorAll('.jumpy')).toHaveLength 0
+            expect(textEditorElement.classList
+                .contains('jumpy-jump-mode')).toBe false
+            expect(textEditor.getOverlayDecorations()).toHaveLength 0
 
     describe "when the jumpy:toggle event is triggered
     and invalid hotkeys are entered", ->
-        it "jumpy is cleared", ->
+        it "does nothing", ->
             atom.commands.dispatch workspaceElement, 'jumpy:z'
             atom.commands.dispatch workspaceElement, 'jumpy:z'
             cursorPosition = textEditor.getCursorBufferPosition()
@@ -203,9 +211,8 @@ describe "Jumpy", ->
         it "the beacon animation class is removed", ->
             atom.commands.dispatch workspaceElement, 'jumpy:a'
             waitsFor ->
-                setTimeout ->
+                ->
                     atom.commands.dispatch workspaceElement, 'jumpy:c'
-                ,100 + 10 # max default I'd probably use + a buffer
             runs ->
                 expect(textEditorElement.shadowRoot
                     .querySelectorAll('.beacon').length)
@@ -213,7 +220,7 @@ describe "Jumpy", ->
 
     describe "when the jumpy:toggle event is triggered", ->
         it "updates the status bar", ->
-            expect(document.querySelector('#status-bar-jumpy .status').innerHTML)
+            expect document.querySelector('#status-bar-jumpy .status').innerHTML
                 .toBe 'Jump Mode!'
 
     describe "when the jumpy:clear event is triggered", ->
@@ -224,15 +231,16 @@ describe "Jumpy", ->
 
     describe "when the jumpy:a event is triggered", ->
         it "updates the status bar with a", ->
-            atom.commands.dispatch textEditorElement, 'jumpy:a'
+            atom.commands.dispatch workspaceElement, 'jumpy:a'
             expect(document
                 .querySelector '#status-bar-jumpy .status'
                     .innerHTML).toBe 'a'
         it "removes all labels that don't begin with a", ->
-            atom.commands.dispatch textEditorElement, 'jumpy:a'
-            expect(textEditorElement.shadowRoot
-                .querySelectorAll('.jumpy.label:not(.irrelevant)').length)
-                    .toBe 26
+            atom.commands.dispatch workspaceElement, 'jumpy:a'
+            decorations = textEditor.getOverlayDecorations()
+            relevantDecorations = decorations.filter (d) ->
+                not d.getProperties().item.classList.contains 'irrelevant'
+            expect(relevantDecorations).toHaveLength 26
 
     describe "when the jumpy:reset event is triggered", ->
         it "clears first entered key and lets a new jump take place", ->
@@ -254,9 +262,11 @@ describe "Jumpy", ->
         it "resets all labels even those that don't begin with a", ->
             atom.commands.dispatch textEditorElement, 'jumpy:a'
             atom.commands.dispatch textEditorElement, 'jumpy:reset'
-            expect(textEditorElement.shadowRoot
-                .querySelectorAll('.jumpy.label:not(.irrelevant)')
-                    .length).toBe NUM_TOTAL_WORDS + NUM_CAMEL_SPECIFIC_MATCHES
+            decorations = textEditor.getOverlayDecorations()
+            relevantDecorations = decorations.filter (d) ->
+                not d.getProperties().item.classList.contains 'irrelevant'
+            expect(relevantDecorations).toHaveLength NUM_TOTAL_WORDS +
+                NUM_CAMEL_SPECIFIC_MATCHES
 
     describe "when the a text selection has begun
     before a jumpy:toggle event is triggered", ->
@@ -298,9 +308,10 @@ describe "Jumpy", ->
             expect(cursorPosition.column).toBe 1
         it "leaves the labels up", ->
             atom.commands.dispatch textEditorElement, 'jumpy:z'
-            relevantLabels = textEditorElement.shadowRoot
-                .querySelectorAll('.label:not(.irrelevant)')
-            expect(relevantLabels.length > 0).toBeTruthy()
+            decorations = textEditor.getOverlayDecorations()
+            relevantDecorations = decorations.filter (d) ->
+                not d.getProperties().item.classList.contains 'irrelevant'
+            expect(relevantDecorations.length > 0).toBeTruthy()
 
     describe "when toggle is called with a split tab", ->
         it "continues to label consecutively", ->
@@ -311,24 +322,23 @@ describe "Jumpy", ->
             # NOTE: This also ensures that I shouldn't have to clear the labels
             # In the test, but rather the code does that! (Because the test
             # setup does one toggle always)
-            atom.commands.dispatch textEditorElement, 'jumpy:toggle'
+            atom.commands.dispatch workspaceElement, 'jumpy:toggle'
 
-            labels = getLabelsArrayFromAllEditors()
+            decorations = getDecorationsArrayFromAllEditors()
             expectedTotalNumberWith2Panes =
                 (NUM_TOTAL_WORDS + NUM_CAMEL_SPECIFIC_MATCHES) * 2
-            expect(labels.length)
-                .toBe (expectedTotalNumberWith2Panes)
+            expect(decorations).toHaveLength expectedTotalNumberWith2Panes
             # Beginning of first file
-            expect(labels[0].innerHTML).toBe 'aa'
-            expect(labels[1].innerHTML).toBe 'ab'
+            expect(decorations[0].getProperties().item.textContent).toBe 'aa'
+            expect(decorations[1].getProperties().item.textContent).toBe 'ab'
 
             # End of first file
-            expect(labels[116].innerHTML).toBe 'em'
-            expect(labels[117].innerHTML).toBe 'en'
+            expect(decorations[116].getProperties().item.textContent).toBe 'em'
+            expect(decorations[117].getProperties().item.textContent).toBe 'en'
 
             # Beginning of second file
-            expect(labels[118].innerHTML).toBe 'eo'
-            expect(labels[119].innerHTML).toBe 'ep'
+            expect(decorations[118].getProperties().item.textContent).toBe 'eo'
+            expect(decorations[119].getProperties().item.textContent).toBe 'ep'
 
     describe "when toggle is called with 2 tabs open in same pane", ->
         it "continues to label consecutively", ->
@@ -337,7 +347,8 @@ describe "Jumpy", ->
                     activatePane: true # Just to be clear!
 
             runs ->
-                # TODO: For this test case, these 2 new instances *MIGHT* be crucial.
+                # TODO: For this test case,
+                # these 2 new instances *MIGHT* be crucial.
                 # Or become crucial.  I think it's best to leave these.
                 currentTextEditor = atom.workspace.getActiveTextEditor()
                 currentTextEditorElement = atom.views.getView(currentTextEditor)
@@ -346,16 +357,16 @@ describe "Jumpy", ->
                 # now that we're on the 2nd file.
                 atom.commands.dispatch currentTextEditorElement, 'jumpy:toggle'
 
-                labels = getLabelsArrayFromAllEditors()
+                decorations = getDecorationsArrayFromAllEditors()
                 expectedTotalNumberWith2TabsOpenInOnePane =
                     (NUM_TOTAL_WORDS + NUM_CAMEL_SPECIFIC_MATCHES + 3)
-                expect(labels.length)
-                    .toBe (expectedTotalNumberWith2TabsOpenInOnePane)
+                expect(decorations)
+                    .toHaveLength expectedTotalNumberWith2TabsOpenInOnePane
 
     describe "when a jump mode is enabled", ->
         activationPromise = []
         beforeEach ->
-            activationPromise = atom.packages.activatePackage('find-and-replace')
+            activationPromise = atom.packages.activatePackage 'find-and-replace'
 
         it "clears when a find-and-replace mini pane is opened", ->
             atom.commands.dispatch textEditorElement, 'find-and-replace:show'
@@ -366,15 +377,14 @@ describe "Jumpy", ->
             runs ->
                 expect(textEditorElement
                     .classList.contains('jumpy-jump-mode')).toBe false
-                expect(textEditorElement
-                    .parentElement .querySelectorAll('.jumpy')).toHaveLength 0
+                expect(textEditor.getOverlayDecorations()).toHaveLength 0
                 expect(workspaceElement
                     .querySelectorAll('.find-and-replace')).toHaveLength 1
 
     describe "when a jump mode is enabled", ->
         activationPromise = []
         beforeEach ->
-            activationPromise = atom.packages.activatePackage('fuzzy-finder')
+            activationPromise = atom.packages.activatePackage 'fuzzy-finder'
 
         it "clears when a fuzzy-finder mini pane is opened", ->
             atom.commands.dispatch textEditorElement,
@@ -388,7 +398,6 @@ describe "Jumpy", ->
                     'fuzzy-finder:toggle-file-finder'
                 expect(textEditorElement
                     .classList.contains('jumpy-jump-mode')).toBe false
-                expect(textEditorElement
-                    .parentElement.querySelectorAll('.jumpy')).toHaveLength 0
+                expect(textEditor.getOverlayDecorations()).toHaveLength 0
                 expect(workspaceElement
                     .querySelectorAll('.fuzzy-finder')).toHaveLength 1

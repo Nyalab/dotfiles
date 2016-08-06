@@ -18,6 +18,7 @@ brew tap josegonzalez/homebrew-php
 # la base, posey
 brew install zsh
 brew install git
+brew install hub
 brew install tig
 brew install cloc
 brew install node
@@ -39,7 +40,6 @@ nvm alias default iojs
 
 # apps
 brew cask install limechat
-brew cask install skype
 brew cask install dropbox
 brew cask install spotify
 brew cask install cloud
@@ -47,9 +47,7 @@ brew cask install hammerspoon
 brew cask install iterm2
 brew cask install grandperspective
 brew cask install postico
-brew cask install soundnode
-brew cask install slack
-brew cask install discord
+brew cask install franz
 
 # trop un pirateur tavu
 brew cask install vlc
@@ -59,7 +57,6 @@ brew cask install xquartz
 
 # web dev tavu
 brew cask install atom
-brew cask install sublime-text3
 brew cask install firefox-nightly
 brew cask install firefox
 brew cask install google-chrome
@@ -68,6 +65,7 @@ brew cask install vagrant
 brew cask install vagrant-manager
 brew cask install sequel-pro
 brew cask install cyberduck
+brew cask install hyperterm
 
 #fonts
 brew cask install font-comic-neue

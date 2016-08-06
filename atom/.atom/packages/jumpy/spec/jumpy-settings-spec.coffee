@@ -1,6 +1,8 @@
+### global
+atom
+jasmine describe beforeEach it xit runs expect waitsForPromise
+###
 path = require 'path'
-{Views} = require 'atom'
-Jumpy = require '../lib/jumpy'
 
 NUM_ALPHA_TEST_WORDS = 26 * 3
 NUM_ENGLISH_TEXT = 8 - 2 #For a's that are only 1 character.  *'s don't count.
@@ -48,10 +50,10 @@ describe "Jumpy with non default settings on", ->
 
     describe "when the jumpy:toggle event is triggered", ->
         it "draws correctly colored labels", ->
-            expect(textEditorElement.shadowRoot.querySelectorAll('.jumpy.label')[0].classList
-                .contains 'high-contrast').toBe true
+            expect(textEditor.getOverlayDecorations()[0].getProperties().item
+                .classList.contains 'high-contrast').toBe true
         it "draws labels of the right font size", ->
-            expect(textEditorElement.shadowRoot.querySelectorAll('.jumpy.label')[0]
+            expect(textEditor.getOverlayDecorations()[0].getProperties().item
                 .style.fontSize).toBe '50%'
 
     describe "when the jumpy:toggle event is triggered
@@ -66,27 +68,27 @@ describe "Jumpy with non default settings on", ->
 
     describe "when a custom match (jumpy default) is used", ->
         it "draws correct labels", ->
-            labels = textEditorElement.shadowRoot.querySelectorAll('.jumpy.label')
+            labels = textEditor.getOverlayDecorations()
             expect(labels.length)
                 .toBe NUM_TOTAL_WORDS
-            expect(labels[0].innerHTML).toBe 'aa'
-            expect(labels[1].innerHTML).toBe 'ab'
-            expect(labels[82].innerHTML).toBe 'de'
-            expect(labels[83].innerHTML).toBe 'df'
+            expect(labels[0].getProperties().item.textContent).toBe 'aa'
+            expect(labels[1].getProperties().item.textContent).toBe 'ab'
+            expect(labels[82].getProperties().item.textContent).toBe 'de'
+            expect(labels[83].getProperties().item.textContent).toBe 'df'
 
     describe "when a custom match is used (camel case)", ->
         it "draws correct labels and jumps appropriately", ->
             atom.commands.dispatch textEditorElement, 'jumpy:clear'
             atom.config.set 'jumpy.matchPattern', '([A-Z]+([0-9a-z])*)|[a-z0-9]{2,}'
             atom.commands.dispatch textEditorElement, 'jumpy:toggle'
-            labels = textEditorElement.shadowRoot.querySelectorAll('.jumpy.label')
+            labels = textEditor.getOverlayDecorations()
             expect(labels.length)
                 .toBe NUM_TOTAL_WORDS + NUM_CAMEL_SPECIFIC_MATCHES
             # BASE CASE WORDS:
-            expect(labels[0].innerHTML).toBe 'aa'
-            expect(labels[1].innerHTML).toBe 'ab'
-            expect(labels[82].innerHTML).toBe 'de'
-            expect(labels[83].innerHTML).toBe 'df'
+            expect(labels[0].getProperties().item.textContent).toBe 'aa'
+            expect(labels[1].getProperties().item.textContent).toBe 'ab'
+            expect(labels[82].getProperties().item.textContent).toBe 'de'
+            expect(labels[83].getProperties().item.textContent).toBe 'df'
 
             #CAMELS:
             atom.commands.dispatch textEditorElement, 'jumpy:e'

@@ -1,0 +1,40 @@
+{
+  "name": "duotone-snow",
+  "theme": "syntax",
+  "version": "1.2.0",
+  "description": "White easy on the eyes duotone syntax theme with soft blue and red colors.",
+  "keywords": [
+    "duotone",
+    "syntax",
+    "light",
+    "white"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nielsenramon/duotone-snow.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">1.0.0"
+  },
+  "readme": "# DuoTone snow\n\nA double-hue white syntax theme for Atom based on [duotone-syntax](https://github.com/simurai/duotone-syntax).\n\nI prefer dark themes but working for full days in dark IDE take their toll on the eyes ([proof](http://ux.stackexchange.com/questions/53264/dark-or-white-color-theme-is-better-for-the-eyes)). So I decided to contribute a white syntax theme.\n\n<img src=\"https://dl.dropboxusercontent.com/u/20823269/duotone-snow.png\" width=\"500\" />\n\nDuoTone themes use only 2 hues (7 shades in total). It __tones down__ less important parts (like punctuation and brackets) and highlights only the __important__ ones. This leads to a more calm color scheme, but still lets you find the stuff you're looking for.\n\n## Language support\n\nDuoTone themes are optimized for many languages:\n\n> C, Clojure, CoffeeScript, C#, CSS, GF Markdown, Go, Haskell, HTML, Java, JavaScript, JSON, Less, Perl, PHP, Python, Ruby, SASS, SCSS, Stylus, XML, YAML...\n\nMore optimizations to come. See the growing list of [all languages](/styles/languages).\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/nielsenramon/duotone-snow/issues"
+  },
+  "homepage": "https://github.com/nielsenramon/duotone-snow#readme",
+  "_id": "duotone-snow@1.2.0",
+  "_shasum": "6bcf56276b427999a468f2564312d429169f31c8",
+  "_resolved": "file:../d-11618-8430-ejehfn/package.tgz",
+  "_from": "../d-11618-8430-ejehfn/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

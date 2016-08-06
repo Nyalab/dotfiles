@@ -4,3 +4,5 @@ killall Finder
 
 defaults write com.apple.dock autohide 1
 defaults write com.apple.dock tilesize 40
+defaults write com.apple.screencapture location ~/screenshots
+killall SystemUIServer

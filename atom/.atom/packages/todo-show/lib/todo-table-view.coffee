@@ -11,16 +11,7 @@ class ShowTodoView extends View
 
   initialize: (@collection) ->
     @disposables = new CompositeDisposable
-    @disposables.add atom.config.onDidChange 'todo-show.showInTable', ({newValue, oldValue}) =>
-      @showInTable = newValue
-      @renderTable @collection.getTodos()
-
-    @disposables.add atom.config.onDidChange 'todo-show.sortBy', ({newValue, oldValue}) =>
-      @sort(@sortBy = newValue, @sortAsc)
-
-    @disposables.add atom.config.onDidChange 'todo-show.sortAscending', ({newValue, oldValue}) =>
-      @sort(@sortBy, @sortAsc = newValue)
-
+    @handleConfigChanges()
     @handleEvents()
 
   handleEvents: ->
@@ -34,7 +25,18 @@ class ShowTodoView extends View
 
     @on 'click', 'th', @tableHeaderClicked
 
-  detached: ->
+  handleConfigChanges: ->
+    @disposables.add atom.config.onDidChange 'todo-show.showInTable', ({newValue, oldValue}) =>
+      @showInTable = newValue
+      @renderTable @collection.getTodos()
+
+    @disposables.add atom.config.onDidChange 'todo-show.sortBy', ({newValue, oldValue}) =>
+      @sort(@sortBy = newValue, @sortAsc)
+
+    @disposables.add atom.config.onDidChange 'todo-show.sortAscending', ({newValue, oldValue}) =>
+      @sort(@sortBy, @sortAsc = newValue)
+
+  destroy: ->
     @disposables.dispose()
     @empty()
 

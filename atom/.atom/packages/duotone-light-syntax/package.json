@@ -1,7 +1,7 @@
 {
   "name": "duotone-light-syntax",
   "theme": "syntax",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "A light DuoTone syntax theme",
   "keywords": [
     "light",
@@ -18,16 +18,16 @@
   "engines": {
     "atom": ">1.0.0"
   },
-  "readme": "# DuoTone light\n\nA double-hue syntax theme for Atom.\n\n![DuoTone light](https://cloud.githubusercontent.com/assets/378023/7219573/744b074e-e6e1-11e4-9112-623c60f08c79.png)\n\nDuoTone light uses only 2 hues (copper & blue) and has 7 shades in total. It __tones down__ less important parts (like punctuation and brackets) and highlights only the __important__ ones. This leads to a more calm color scheme, but still lets you find the stuff you're looking for.\n\n![CSS in DuoTone light](https://cloud.githubusercontent.com/assets/378023/7219568/5caa00cc-e6e1-11e4-894c-1722a0f742df.png)\n\n![HTML in DuoTone light](https://cloud.githubusercontent.com/assets/378023/7219570/5cb14b2a-e6e1-11e4-9056-0280c9412e88.png)\n\n> The font in the screenshot is `Fira Mono`. You can download it from https://github.com/mozilla/Fira\n\n\n### Currently tested and optimized for these languages:\n\n- C\n- Clojure\n- CoffeeScript\n- C#\n- CSS\n- GF Markdown\n- Go\n- Haskell\n- HTML\n- Java\n- JavaScript\n- JSON\n- Less\n- Perl\n- PHP\n- Python\n- Ruby\n- SASS\n- SCSS\n- Stylus\n- (La-)TeX\n- XML\n- YAML\n\nMore optimization to come..\n\n### Issues and contributing\n\nIf you would like to create a new __Issue__ or __PR__, please do so in:\n\n- __this repo__ if it's about __color__ changes, like in `colors.less` or `syntax-variables.less`.\n- __[DuoTone master template](https://github.com/simurai/duotone-syntax)__ if it's about __everything else__, like in improving language support. Changes will trickle down into this theme too.\n",
+  "readme": "# DuoTone light\n\nA double-hue syntax theme for Atom.\n\n![DuoTone light](https://cloud.githubusercontent.com/assets/378023/7219573/744b074e-e6e1-11e4-9112-623c60f08c79.png)\n\nDuoTone light uses only 2 hues (copper & blue) and has 7 shades in total. It __tones down__ less important parts (like punctuation and brackets) and highlights only the __important__ ones. This leads to a more calm color scheme, but still lets you find the stuff you're looking for.\n\n![CSS in DuoTone light](https://cloud.githubusercontent.com/assets/378023/7219568/5caa00cc-e6e1-11e4-894c-1722a0f742df.png)\n\n![HTML in DuoTone light](https://cloud.githubusercontent.com/assets/378023/7219570/5cb14b2a-e6e1-11e4-9056-0280c9412e88.png)\n\n> The font in the screenshot is `Fira Mono`. You can download it from https://github.com/mozilla/Fira\n\n\n## Language support\n\nDuoTone themes are optimized for many languages:\n\n> C, Clojure, CoffeeScript, C#, CSS, GF Markdown, Go, Haskell, HTML, Java, JavaScript, JSON, Less, Perl, PHP, Python, Ruby, SASS, SCSS, Stylus, XML, YAML...\n\nMore optimizations to come. See the growing list of [all languages](/styles/languages).\n\n\n## Variations\n\nHere a list for all [DuoTone themes](https://atom.io/themes/search?utf8=%E2%9C%93&q=keyword:duotone). Or at least the ones that have the `duotone` keyword added. :grin:\n\n\n### Issues and contributing\n\nIf you would like to create a new __Issue__ or __PR__, please do so in:\n\n- __this repo__ if it's about __color__ changes, like in `colors.less` or `syntax-variables.less`.\n- __[DuoTone master template](https://github.com/simurai/duotone-syntax)__ if it's about __everything else__, like in improving language support. Changes will trickle down into this theme too.\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/simurai/duotone-light-syntax/issues"
   },
   "homepage": "https://github.com/simurai/duotone-light-syntax#readme",
-  "_id": "duotone-light-syntax@0.5.0",
-  "_shasum": "d5e7a476c13a8db2a66df40b21de273d3c863e20",
-  "_resolved": "file:../d-116025-55095-lkzd68/package.tgz",
-  "_from": "../d-116025-55095-lkzd68/package.tgz",
+  "_id": "duotone-light-syntax@1.0.0",
+  "_shasum": "19992e8f38292fbeb0d84cff2d6d5ee8e61ac72b",
+  "_resolved": "file:../d-11618-8423-kw7n0j/package.tgz",
+  "_from": "../d-11618-8423-kw7n0j/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

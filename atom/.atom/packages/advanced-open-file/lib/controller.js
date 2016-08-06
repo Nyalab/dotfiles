@@ -2,6 +2,8 @@
 
 import stdPath from 'path';
 
+import {CompositeDisposable} from 'atom';
+
 import {Emitter} from 'event-kit';
 import osenv from 'osenv';
 
@@ -23,11 +25,12 @@ export class AdvancedOpenFileController {
 
         this.currentPath = null;
         this.pathHistory = [];
+        this.disposables = new CompositeDisposable();
 
-        atom.commands.add('atom-workspace', {
+        this.disposables.add(atom.commands.add('atom-workspace', {
             'advanced-open-file:toggle': ::this.toggle
-        });
-        atom.commands.add('.advanced-open-file', {
+        }));
+        this.disposables.add(atom.commands.add('.advanced-open-file', {
             'core:confirm': ::this.confirm,
             'core:cancel': ::this.detach,
             'application:add-project-folder': ::this.addSelectedProjectFolder,
@@ -42,12 +45,16 @@ export class AdvancedOpenFileController {
             'pane:split-right': this.splitConfirm((pane) => pane.splitRight()),
             'pane:split-up': this.splitConfirm((pane) => pane.splitUp()),
             'pane:split-down': this.splitConfirm((pane) => pane.splitDown()),
-        });
+        }));
 
         this.view.onDidClickFile(::this.clickFile);
         this.view.onDidClickAddProjectFolder(::this.addProjectFolder);
         this.view.onDidClickOutside(::this.detach);
         this.view.onDidPathChange(::this.pathChange);
+    }
+
+    destroy() {
+        this.disposables.dispose();
     }
 
     clickFile(fileName) {
@@ -123,22 +130,39 @@ export class AdvancedOpenFileController {
                 atom.beep();
             }
         } else if (path.fragment) {
-            path.createDirectories();
-            if (config.get('createFileInstantly')) {
-                path.createFile();
-                emitter.emit('did-create-path', path.absolute);
+            try {
+                path.createDirectories();
+                if (config.get('createFileInstantly')) {
+                    path.createFile();
+                    emitter.emit('did-create-path', path.absolute);
+                }
+                atom.workspace.open(path.absolute);
+                emitter.emit('did-open-path', path.absolute);
+            } catch (err) {
+                atom.notifications.addError('Could not open file', {
+                    detail: err,
+                    icon: 'alert',
+                });
+            } finally {
+                this.detach();
             }
-            atom.workspace.open(path.absolute);
-            emitter.emit('did-open-path', path.absolute);
-            this.detach();
         } else if (config.get('createDirectories')) {
-            path.createDirectories();
-            atom.notifications.addSuccess('Directory created', {
-                detail: `Created directory "${path.full}".`,
-                icon: 'file-directory',
-            });
-            emitter.emit('did-create-path', path.absolute);
-            this.detach();
+            try {
+                path.createDirectories();
+                atom.notifications.addSuccess('Directory created', {
+                    detail: `Created directory "${path.full}".`,
+                    icon: 'file-directory',
+                });
+                emitter.emit('did-create-path', path.absolute);
+                this.detach();
+            } catch (err) {
+                atom.notifications.addError('Could not create directory', {
+                    detail: err,
+                    icon: 'file-directory',
+                });
+            } finally {
+                this.detach();
+            }
         } else {
             atom.beep();
         }
@@ -156,7 +180,11 @@ export class AdvancedOpenFileController {
         let folderPath = new Path(fileName);
         if (folderPath.isDirectory() && !folderPath.isProjectDirectory()) {
             atom.project.addPath(folderPath.absolute);
-            this.detach();
+            atom.notifications.addSuccess('Added project folder', {
+                detail: `Added "${folderPath.full}" as a project folder.`,
+                icon: 'file-directory',
+            });
+            this.view.refreshPathListItem(folderPath);
         } else {
             atom.beep();
         }

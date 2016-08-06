@@ -9,12 +9,12 @@ describe 'ShowTodo opening panes and executing commands', ->
   # and wait for loading to stop
   executeCommand = (callback) ->
     wasVisible = showTodoModule?.showTodoView.isVisible()
-    atom.commands.dispatch(workspaceElement, 'todo-show:find-in-project')
+    atom.commands.dispatch(workspaceElement, 'todo-show:find-in-workspace')
     waitsForPromise -> activationPromise
     runs ->
       waitsFor ->
         return !showTodoModule.showTodoView.isVisible() if wasVisible
-        !showTodoModule.showTodoView.loading and showTodoModule.showTodoView.isVisible()
+        !showTodoModule.showTodoView.isSearching() and showTodoModule.showTodoView.isVisible()
       runs ->
         showTodoPane = atom.workspace.paneForItem(showTodoModule.showTodoView)
         callback()
@@ -26,7 +26,7 @@ describe 'ShowTodo opening panes and executing commands', ->
     activationPromise = atom.packages.activatePackage('todo-show').then (opts) ->
       showTodoModule = opts.mainModule
 
-  describe 'when the show-todo:find-in-project event is triggered', ->
+  describe 'when the show-todo:find-in-workspace event is triggered', ->
     it 'attaches and then detaches the pane view', ->
       expect(atom.packages.loadedPackages['todo-show']).toBeDefined()
       expect(workspaceElement.querySelector('.show-todo-preview')).not.toExist()
@@ -105,6 +105,34 @@ describe 'ShowTodo opening panes and executing commands', ->
             expect(showTodoPane.getFlexScale()).toEqual newFlex
             showTodoPane.setFlexScale(originalFlex)
 
+  describe 'when the show-todo:find-in-workspace event is triggered', ->
+    it 'activates', ->
+      expect(atom.packages.loadedPackages['todo-show']).toBeDefined()
+      expect(workspaceElement.querySelector('.show-todo-preview')).not.toExist()
+
+  describe 'when todo item is clicked', ->
+    it 'opens the file', ->
+      executeCommand ->
+        element = showTodoModule.showTodoView.find('td').last()
+        item = atom.workspace.getActivePaneItem()
+        expect(item).not.toBeDefined()
+        element.click()
+
+        waitsFor -> item = atom.workspace.getActivePaneItem()
+        runs -> expect(item.getTitle()).toBe 'sample.js'
+
+    it 'opens file other project', ->
+      atom.project.addPath path.join(__dirname, 'fixtures/sample2')
+
+      executeCommand ->
+        element = showTodoModule.showTodoView.find('td')[3]
+        item = atom.workspace.getActivePaneItem()
+        expect(item).not.toBeDefined()
+        element.click()
+
+        waitsFor -> item = atom.workspace.getActivePaneItem()
+        runs -> expect(item.getTitle()).toBe 'sample.txt'
+
   describe 'when save-as button is clicked', ->
     it 'saves the list in markdown and opens it', ->
       outputPath = temp.path(suffix: '.md')
@@ -127,7 +155,7 @@ describe 'ShowTodo opening panes and executing commands', ->
 
     it 'saves another list sorted differently in markdown', ->
       outputPath = temp.path(suffix: '.md')
-      atom.config.set 'todo-show.findTheseRegexes', ['TODOs', '/\\b@?TODO:?\\s(.+$)/g']
+      atom.config.set 'todo-show.findTheseTodos', ['TODO']
       atom.config.set 'todo-show.showInTable', ['Text', 'Type', 'File', 'Line']
       atom.config.set 'todo-show.sortBy', 'File'
       expect(fs.isFileSync(outputPath)).toBe false
@@ -142,9 +170,9 @@ describe 'ShowTodo opening panes and executing commands', ->
       runs ->
         expect(fs.isFileSync(outputPath)).toBe true
         expect(atom.workspace.getActiveTextEditor().getText()).toBe """
-          - Comment in C __TODOs__ [sample.c](sample.c) _:5_
-          - This is the first todo __TODOs__ [sample.js](sample.js) _:3_
-          - This is the second todo __TODOs__ [sample.js](sample.js) _:20_\n
+          - Comment in C __TODO__ [sample.c](sample.c) _:5_
+          - This is the first todo __TODO__ [sample.js](sample.js) _:3_
+          - This is the second todo __TODO__ [sample.js](sample.js) _:20_\n
         """
 
   describe 'when core:refresh is triggered', ->
@@ -152,13 +180,13 @@ describe 'ShowTodo opening panes and executing commands', ->
       executeCommand ->
         atom.commands.dispatch workspaceElement.querySelector('.show-todo-preview'), 'core:refresh'
 
-        expect(showTodoModule.showTodoView.loading).toBe true
+        expect(showTodoModule.showTodoView.isSearching()).toBe true
         expect(showTodoModule.showTodoView.find('.markdown-spinner')).toBeVisible()
 
-        waitsFor -> !showTodoModule.showTodoView.loading
+        waitsFor -> !showTodoModule.showTodoView.isSearching()
         runs ->
           expect(showTodoModule.showTodoView.find('.markdown-spinner')).not.toBeVisible()
-          expect(showTodoModule.showTodoView.loading).toBe false
+          expect(showTodoModule.showTodoView.isSearching()).toBe false
 
   describe 'when the show-todo:find-in-open-files event is triggered', ->
     beforeEach ->
@@ -166,7 +194,7 @@ describe 'ShowTodo opening panes and executing commands', ->
       waitsForPromise -> activationPromise
       runs ->
         waitsFor ->
-          !showTodoModule.showTodoView.loading and showTodoModule.showTodoView.isVisible()
+          !showTodoModule.showTodoView.isSearching() and showTodoModule.showTodoView.isVisible()
 
     it 'does not show any results with no open files', ->
       element = showTodoModule.showTodoView.find('p').last()
@@ -179,10 +207,10 @@ describe 'ShowTodo opening panes and executing commands', ->
       waitsForPromise ->
         atom.workspace.open 'sample.c'
 
-      waitsFor -> !showTodoModule.showTodoView.loading
+      waitsFor -> !showTodoModule.showTodoView.isSearching()
       runs ->
         todos = showTodoModule.showTodoView.getTodos()
         expect(todos).toHaveLength 1
-        expect(todos[0].type).toBe 'TODOs'
+        expect(todos[0].type).toBe 'TODO'
         expect(todos[0].text).toBe 'Comment in C'
         expect(todos[0].file).toBe 'sample.c'

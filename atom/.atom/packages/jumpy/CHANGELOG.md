@@ -1,3 +1,18 @@
+## 3.0.3
+* Fix issue #84 (PR: #85) from Danny Arnold (@despairblue)
+
+## 3.0.2
+* Fix issue when switching tabs if jump mode is open.
+
+## 3.0.1
+* Is the actual released version of the below (had to deal with some publishing issues in core).
+
+## 3.0.0
+* Fix new Atom releases performance issue (tiling changes) by using
+  markers and decorations.
+* Big refactor.
+* BREAKING CHANGES: See README.md for new custom styling methods.
+
 ## 2.0.10
 * Fix broken labels with atom-material-ui theme.  Thanks to @livelazily for some help with this!
 

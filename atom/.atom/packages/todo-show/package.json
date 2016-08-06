@@ -1,10 +1,11 @@
 {
   "name": "todo-show",
-  "version": "1.3.0",
+  "version": "1.6.0",
   "main": "./lib/show-todo",
   "description": "Finds all the TODOs, FIXMEs, CHANGEDs, etc. in your project.",
   "activationCommands": {
     "atom-workspace": [
+      "todo-show:find-in-workspace",
       "todo-show:find-in-project",
       "todo-show:find-in-open-files"
     ]
@@ -24,22 +25,22 @@
     "temp": "^0.8.1",
     "underscore-plus": "^1.6.6"
   },
-  "readme": "# Todo Show Package [![Build Status](https://travis-ci.org/mrodalgaard/atom-todo-show.svg)](https://travis-ci.org/mrodalgaard/atom-todo-show)\n\nFinds all the TODO, FIXME, CHANGED, XXX, IDEA, HACK, NOTE, REVIEW comments in your project. Or anything else you want to fetch through settings.\n\nOpen using command palette `Todo Show: Find In Project` or `Todo Show: Find In Open Files`. Keyboard shortcuts <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> on Mac OSX or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> on Windows and Linux.\n\n![todo-show-package](https://raw.githubusercontent.com/mrodalgaard/atom-todo-show/master/screenshots/preview.png)\n\n## Config\n\n* __findTheseRegexes__: An array of titles and regexes to look for (`['title1', 'regex1', 'title2', 'regex2', ...]`). Look at the \"Regex Details\" section below for more information.\n* __ignoreThesePaths__: An array of files / folders to exclude (syntax according to [scandal](https://github.com/atom/scandal) used internally by Atom).\n  - __globally__: `Ignored Names` from atom core settings.\n  - __locally__: Ignores anything in your `.gitignore` file if the current project is a valid git repository and atom core setting `Exclude VCS Ignored Paths` is checked.\n* __showInTable__: An array of properties to show for each todo in table.\n* __sortBy__: Sort table by this todo property.\n* __sortAscending__: Sort table in ascending or descending order.\n* __openListInDirection__: Defines where the todo list is shown.\n* __rememberViewSize__: Remember the todo list width or split in the middle.\n* __saveOutputAs__: Choose which format to use for saved markdown.\n\n## Regex Details\n\nThe regexes in `findTheseRegexes` are used for searching the workspace for todo matches. They are configurable to match the users specific needs.\n\nDefault regex form: `'/\\\\b@?TODO:?\\\\d*($|\\\\s.*$)/g'`\n* `@?`: an optional @ in front of todo\n* `TODO`: the todo string itself\n* `:?` an optional semicolon after todo\n* `\\d*` optional digits for supporting the [imdone](http://imdone.io/) sorting\n* `$` to end todos without additional text (newline)\n* Or `\\s.*$` to match the todo text with a non-optional space in front\n* As the config only accepts strings all `\\` characters are also escaped.\n\nTo extend the default list of regexes the existing array needs to be copied into your config.cson. See [show-todo.coffee](https://github.com/mrodalgaard/atom-todo-show/blob/master/lib/show-todo.coffee#L12) for current defaults.\n\n## More\n\n> Contributions, bug reports and feature requests are very welcome.\n\n> &nbsp; &nbsp; _- Martin_\n",
+  "readme": "# Todo Show Package [![Build Status](https://travis-ci.org/mrodalgaard/atom-todo-show.svg)](https://travis-ci.org/mrodalgaard/atom-todo-show)\n\nFinds all TODO, FIXME, CHANGED, XXX, IDEA, HACK, NOTE, REVIEW comments in your project and shows them in a nice overview list.\n\nOpen todo list using command palette `Todo Show: Find In Workspace`, `Todo Show: Find In Project` or `Todo Show: Find In Open Files`. Keyboard shortcuts <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> on Mac OSX or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>T</kbd> on Windows and Linux.\n\nInstall with `apm install todo-show` or use *Install Packages* from *Atom Settings*.\n\n![todo-show-package](https://raw.githubusercontent.com/mrodalgaard/atom-todo-show/master/screenshots/preview.png)\n\n## Search Scopes\n\nFour different scopes are available to narrow down your search for todos. Change scope using the button at the top of the todo tab or use the corresponding command.\n* __Workspace__: Searches all open projects.\n* __Project__: Searches active project (a project is marked as active when you open a file it contains).\n* __Open Files__: Searches currently open files.\n* __Active File__: Searches last active file only.\n\n## Configuration\n\nName                  | Default                                 | Description                                                                                                                                      \n----------------------|-----------------------------------------|------------\n_findTheseTodos_      | `['FIXME', 'TODO', 'CHANGED', 'XXX', 'IDEA', 'HACK', 'NOTE', 'REVIEW']` | An array of todo types used by the search regex\n_findUsingRegex_      | See 'Regular Expression Search' section | Regex string used to find all your todos. `${TODOS}` is replaced with `findTheseTodos` from above\n_ignoreThesePaths_    | `['**/node_modules/', '**/vendor/', '**/bower_components/']` | An array of files / folders to exclude (syntax according to [scandal](https://github.com/atom/scandal) used internally by Atom). <br> ⚬ _globally_: `Ignored Names` from atom core settings. <br> ⚬ _locally_: Ignores anything in your `.gitignore` file if the current project is a valid git repository and atom core setting `Exclude VCS Ignored Paths` is checked.\n_showInTable_         | `['Text', 'Type', 'Path']`              | An array of properties to show for each todo in table\n_sortBy_              | `'Text'`                                | Sort table by this todo property\n_sortAscending_       | `true`                                  | Sort table in ascending or descending order\n_openListInDirection_ | `'right'`                               | Defines where the todo list is shown\n_rememberViewSize_    | `true`                                  | Remember the todo list width or split in the middle\n_saveOutputAs_        | `'List'`                                | Choose which format to use for saved markdown\n\n## Regular Expression Search\n\nThe regexes in `findTheseRegexes` are used for searching the workspace for todo matches. They are configurable to match the users specific needs.\n\nDefault regex string: `'/\\\\b(${TODOS})[:;.,]?\\\\d*($|\\\\s.*$|\\\\(.*$)/g'`\n* `\\b` start at word boundary\n* `${TODOS}` todo type match (is replaced with `findTheseTodos`)\n* `[:;.,]?` optional separator after type\n* `\\d*` optional digits for supporting [imdone](http://imdone.io/) sorting\n* `$` to end todos without additional text (newline)\n* Or `\\s.*$` to match the todo text with a non-optional space in front\n* Or an immediate parentheses, `\\(.*$`, to support [Google style guide IDs](https://google.github.io/styleguide/cppguide.html#TODO_Comments)\n* Because Atom config only accepts strings all `\\` characters are also escaped\n\nTo extend the default todo types and search regex, the existing config needs to be copied into your config.cson. See [show-todo.coffee](https://github.com/mrodalgaard/atom-todo-show/blob/master/lib/show-todo.coffee) for current defaults.\n\n## Credits\nCreated by [Jamis Charles](https://github.com/jamischarles)\n\nMaintained by [Martin Rodalgaard](https://github.com/mrodalgaard)\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/mrodalgaard/atom-todo-show/issues"
   },
   "homepage": "https://github.com/mrodalgaard/atom-todo-show#readme",
-  "_id": "todo-show@1.3.0",
-  "_shasum": "c0f2cadc75922bc63215b05b64cc4d7f98a33566",
-  "_resolved": "file:../d-1151121-58867-8rhb9i/package.tgz",
-  "_from": "../d-1151121-58867-8rhb9i/package.tgz",
+  "_id": "todo-show@1.6.0",
+  "_shasum": "ddd054fd8b248bc16bef52dfcab7019039f0805e",
+  "_resolved": "file:../d-11644-7130-1bke4i0/package.tgz",
+  "_from": "../d-11644-7130-1bke4i0/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
         "name": "atom-space-pen-views",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "path": "node_modules/atom-space-pen-views/lib/main.js"
       },
       {
@@ -49,7 +50,7 @@
       },
       {
         "name": "space-pen",
-        "version": "5.1.1",
+        "version": "5.1.2",
         "path": "node_modules/atom-space-pen-views/node_modules/space-pen/lib/space-pen.js"
       },
       {
@@ -114,7 +115,7 @@
       },
       {
         "name": "fs-plus",
-        "version": "2.8.1",
+        "version": "2.8.2",
         "path": "node_modules/fs-plus/lib/fs-plus.js"
       },
       {
@@ -171,6 +172,7 @@
         "lib/todo-markdown.coffee",
         "lib/todo-model.coffee",
         "lib/todo-options-view.coffee",
+        "lib/todo-regex.coffee",
         "lib/todo-table-view.coffee",
         "lib/todo-view.coffee"
       ],
@@ -794,7 +796,7 @@
         ],
         "dependencies": {
           "fuzzaldrin": "^2.1.0",
-          "space-pen": "^5.0.1"
+          "space-pen": "^5.1.2"
         }
       },
       {
@@ -804,7 +806,7 @@
         ],
         "dependencies": {
           "grim": "^1.0.0",
-          "jquery": "^2.1.3",
+          "jquery": "2.1.4",
           "underscore-plus": "1.x"
         }
       },

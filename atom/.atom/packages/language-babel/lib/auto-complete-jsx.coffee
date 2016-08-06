@@ -8,7 +8,7 @@ JSXTAG = 2
 JSXATTRIBUTE = 3
 # regex to search for tag open/close tag and close tag
 JSXREGEXP = /(?:(<)|(<\/))([$_A-Za-z](?:[$._:\-a-zA-Z0-9])*)|(?:(\/>)|(>))/g
-TAGREGEXP =  /<([$_a-zA-Z][$._:\-a-zA-Z0-9]*)(\s|\/>|>)/g
+TAGREGEXP =  /<([$_a-zA-Z][$._:\-a-zA-Z0-9]*)($|\s|\/>|>)/g
 COMPLETIONS = require "./completions-jsx"
 REACTURL = "http://facebook.github.io/react/docs/tags-and-attributes.html"
 
@@ -34,7 +34,7 @@ module.exports =
       tagNameStack = @buildTagStack(editor, jsxRange)
       while ( tagName = tagNameStack.pop())?
         suggestions.push
-          snippet: "$1</#{tagName}>$2"
+          snippet: "$1</#{tagName}>"
           type: "tag"
           description: "language-babel tag closer"
 
@@ -93,7 +93,7 @@ module.exports =
         scopes = editor.scopeDescriptorForBufferPosition([row, match.index+1]).getScopesArray()
         if "entity.name.tag.open.jsx" in scopes then matches.push match[1]
       # return the tag that is the last one found
-      if matches
+      if matches.length
         return matches.pop()
       else row--
 

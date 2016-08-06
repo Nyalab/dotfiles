@@ -29,3 +29,12 @@ if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
 fi
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
+alias git=hub
+export NVM_DIR=~/.nvm
+source /usr/local/opt/nvm/nvm.sh
+export NVM_DIR=~/.nvm
+source /usr/local/opt/nvm/nvm.sh

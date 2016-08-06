@@ -1,3 +1,23 @@
+## 1.6.0
+- Fix left splitting list
+- Handle unsaved files
+- Open multi-project file bug fix
+
+## 1.5.0
+- Search project option
+- Support pending tabs
+- Use text before todo if empty after
+- Can show file and path
+- Accept other separators
+- Improved readme
+- Support Google style guide
+
+## 1.4.0
+- Major performance improvement by only using one regex
+- Handle duplicate todos
+- Better doc and settings view
+- Show todo count in bar title
+
 ## 1.3.0
 - Minor internal improvements
 - Model restructure

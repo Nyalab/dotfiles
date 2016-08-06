@@ -6,10 +6,17 @@ fs = require 'fs-plus'
 TodoTable = require './todo-table-view'
 TodoOptions = require './todo-options-view'
 
+deprecatedTextEditor = (params) ->
+  if atom.workspace.buildTextEditor?
+    atom.workspace.buildTextEditor(params)
+  else
+    TextEditor = require('atom').TextEditor
+    new TextEditor(params)
+
 module.exports =
 class ShowTodoView extends ScrollView
   @content: (collection, filterBuffer) ->
-    filterEditor = atom.workspace.buildTextEditor(
+    filterEditor = deprecatedTextEditor(
       mini: true
       tabLength: 2
       softTabs: true
@@ -22,13 +29,16 @@ class ShowTodoView extends ScrollView
       @div class: 'input-block', =>
         @div class: 'input-block-item input-block-item--flex', =>
           @subview 'filterEditorView', new TextEditorView(editor: filterEditor)
-
         @div class: 'input-block-item', =>
           @div class: 'btn-group', =>
             @button outlet: 'scopeButton', class: 'btn'
             @button outlet: 'optionsButton', class: 'btn icon-gear'
             @button outlet: 'saveAsButton', class: 'btn icon-cloud-download'
             @button outlet: 'refreshButton', class: 'btn icon-sync'
+
+      @div class: 'input-block todo-info-block', =>
+        @div class: 'input-block-item', =>
+          @span outlet: 'todoInfo'
 
       @div outlet: 'optionsView'
 
@@ -46,6 +56,13 @@ class ShowTodoView extends ScrollView
     @handleEvents()
     @collection.search()
     @setScopeButtonState(@collection.getSearchScope())
+
+    @notificationOptions =
+      detail: 'Atom todo-show package'
+      dismissable: true
+      icon: @getIconName()
+
+    @checkDeprecation()
 
     @disposables.add atom.tooltips.add @scopeButton, title: "What to Search"
     @disposables.add atom.tooltips.add @optionsButton, title: "Show Todo Options"
@@ -79,7 +96,8 @@ class ShowTodoView extends ScrollView
       @searchCount.text "#{nPaths} paths searched..."
 
     @disposables.add atom.workspace.onDidChangeActivePaneItem (item) =>
-      if item?.constructor.name is 'TextEditor' and @collection.scope is 'active'
+      if @collection.setActiveProject(item?.getPath?()) or
+      (item?.constructor.name is 'TextEditor' and @collection.scope is 'active')
         @collection.search()
 
     @disposables.add atom.workspace.onDidAddTextEditor ({textEditor}) =>
@@ -112,37 +130,52 @@ class ShowTodoView extends ScrollView
     flex = localStorage.getItem 'todo-show.flex'
     pane.setFlexScale parseFloat(flex) if flex
 
-  getTitle: ->
-    "Todo-Show Results"
-
-  getIconName: ->
-    "checklist"
-
-  getURI: ->
-    @uri
-
-  getProjectPath: ->
-    atom.project.getPaths()[0]
-
-  getProjectName: ->
-    atom.project.getDirectories()[0]?.getBaseName()
+  getTitle: -> "Todo Show"
+  getIconName: -> "checklist"
+  getURI: -> @uri
+  getProjectName: -> @collection.getActiveProjectName()
+  getProjectPath: -> @collection.getActiveProject()
+  getTodos: -> @collection.getTodos()
+  isSearching: -> @collection.getState()
 
   startLoading: =>
-    @loading = true
     @todoLoading.show()
+    @updateInfo()
 
   stopLoading: =>
-    @loading = false
     @todoLoading.hide()
+    @updateInfo()
 
-  getTodos: ->
-    @collection.getTodos()
+  updateInfo: ->
+    @todoInfo.html("#{@getInfoText()} #{@getScopeText()}")
 
-  showError: (message) ->
-    atom.notifications.addError 'todo-show', detail: message, dismissable: true
+  getInfoText: ->
+    return "Found ... results" if @isSearching()
+    switch count = @getTodos().length
+      when 1 then "Found #{count} result"
+      else "Found #{count} results"
+
+  getScopeText: ->
+    # TODO: Also show number of files
+
+    switch @collection.scope
+      when 'active'
+        "in active file"
+      when 'open'
+        "in open files"
+      when 'project'
+        "in project <code>#{@getProjectName()}</code>"
+      else
+        "in workspace"
+
+  showError: (message = '') ->
+    atom.notifications.addError message, @notificationOptions
+
+  showWarning: (message = '') ->
+    atom.notifications.addWarning message, @notificationOptions
 
   saveAs: =>
-    return if @collection.isSearching()
+    return if @isSearching()
 
     filePath = "#{@getProjectName() or 'todos'}.md"
     if projectPath = @getProjectPath()
@@ -158,7 +191,8 @@ class ShowTodoView extends ScrollView
 
   setScopeButtonState: (state) =>
     switch state
-      when 'full' then @scopeButton.text 'Workspace'
+      when 'workspace' then @scopeButton.text 'Workspace'
+      when 'project' then @scopeButton.text 'Project'
       when 'open' then @scopeButton.text 'Open Files'
       when 'active' then @scopeButton.text 'Active File'
 
@@ -171,3 +205,11 @@ class ShowTodoView extends ScrollView
 
   filter: ->
     @collection.filterTodos @filterBuffer.getText()
+
+  checkDeprecation: ->
+    if atom.config.get('todo-show.findTheseRegexes')
+      @showWarning '''
+      Deprecation Warning:\n
+      `findTheseRegexes` config is deprecated, please use `findTheseTodos` and `findUsingRegex` for custom behaviour.
+      See https://github.com/mrodalgaard/atom-todo-show#config for more information.
+      '''

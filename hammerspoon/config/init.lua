@@ -22,12 +22,12 @@ end
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.show("Config loaded")
 
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "left", function() 
+hs.hotkey.bind({"ctrl", "alt", "cmd"}, "left", function()
   resizeWindow(true)
 end)
 
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "right", function() 
-  resizeWindow(false) 
+hs.hotkey.bind({"ctrl", "alt", "cmd"}, "right", function()
+  resizeWindow(false)
 end)
 
 function resizeWindow(left)
