@@ -5,3 +5,7 @@ if [ ! -f "$HOME/.atom" ]; then
   ln -s ~/dotfiles/atom/.atom .atom
   cd ~/dotfiles
 fi
+
+if type apm >/dev/null; then
+  apminstall package-sync
+fi
