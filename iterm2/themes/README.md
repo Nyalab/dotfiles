@@ -1,7 +1,5 @@
 #iTerm Color Schemes#
 
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/mbadolato/)
-
 - [Intro](#intro)
 - [Installation Instructions](#installation-instructions)
 - [Contribute](#contribute)
@@ -11,6 +9,7 @@
   - [X11 Installation](#x11-installation)
   - [Konsole color schemes](#konsole-color-schemes)
   - [Terminator color schemes](#terminator-color-schemes)
+  - [Mac OS Terminal color schemes](#terminal-color-schemes)
   - [Previewing color schemes](#previewing-color-schemes)
 
 ##Intro##
@@ -106,6 +105,10 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 
 ![Screenshot](screenshots/borland.png)
 
+###Bright Lights###
+
+![Screenshot](screenshots/bright_lights.png)
+
 ###Broadcast###
 
 ![Screenshot](screenshots/broadcast.png)
@@ -162,9 +165,17 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 
 ![Screenshot](screenshots/dimmed_monokai.png)
 
+###DotGov###
+
+![Screenshot](screenshots/dot_gov.png)
+
 ###Dracula###
 
 ![Screenshot](screenshots/dracula.png)
+
+###Duotone Dark###
+
+![Screenshot](screenshots/duotone_dark.png)
 
 ###Earthsong###
 
@@ -221,6 +232,10 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 ###Github###
 
 ![Screenshot](screenshots/github.png)
+
+##Glacier###
+
+![Screenshot](screenshots/glacier.png)
 
 ###Grape###
 
@@ -285,6 +300,10 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 ###Jellybeans###
 
 ![Screenshot](screenshots/jellybeans.png)
+
+###JetBrains Darcula###
+
+![Screenshot](screenshots/jetbrains_darcula.png)
 
 ###Kibble###
 
@@ -388,7 +407,7 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 
 ![Screenshot](screenshots/ollie.png)
 
-###Paraiso Dark###
+###Parasio Dark###
 
 ![Screenshot](screenshots/paraiso_dark.png)
 
@@ -471,6 +490,19 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 ###Solarized Dark###
 
 ![Screenshot](screenshots/solarized_dark.png)
+
+###Solarized Dark - Patched###
+
+Some applications assume the ANSI color code 8 is a gray color. Solarized treats
+this code as equal to the background. This theme is for people who prefer the
+former. See issues [#59][issue-59], [#62][issue-62], and [#63][issue-63] for
+more information.
+
+![Screenshot](screenshots/solarized_dark_patched.png)
+
+[issue-59]: https://github.com/mbadolato/iTerm2-Color-Schemes/issues/59
+[issue-62]: https://github.com/mbadolato/iTerm2-Color-Schemes/issues/62
+[issue-63]: https://github.com/mbadolato/iTerm2-Color-Schemes/issues/63
 
 ###Solarized Dark Higher Contrast###
 
@@ -563,6 +595,10 @@ To include a screenshot, please generate the output using the [screenshotTable.s
 ###Twilight###
 
 ![Screenshot](screenshots/twilight.png)
+
+###Ubuntu###
+
+![Screenshot](screenshots/ubuntu.png)
 
 ###Urple###
 
@@ -681,7 +717,7 @@ The Pencil Dark and Pencil Light themes were created by [mattly](https://github.
 
 The Flat theme was created by [ahmetsulek](https://github.com/ahmetsulek/flat-terminal)
 
-The Atom, Brogrammer, and Darkside themes were created by [bahlo](https://github.com/bahlo/iterm-colors)
+The Atom, Brogrammer, Glacier and Darkside themes were created by [bahlo](https://github.com/bahlo/iterm-colors)
 
 The Afterglow theme was created by [yabatadesign](https://github.com/YabataDesign/afterglow-itermcolors)
 
@@ -744,6 +780,16 @@ The OceanicMaterial theme was created by [rahulpatel](https://github.com/rahulpa
 The AtomOneLight theme was created by [iamstarkov](https://github.com/iamstarkov)
 
 The Piatto Light theme was created by [kovv](https://github.com/kovv)
+
+The DotGov theme was inspired by the color palette used in the [U.S. Web Design Standards](https://playbook.cio.gov/designstandards/visual-style/)
+
+The DuoTone Dark theme was created by [chibicode](http://chibicode.com) based on [simurai](https://github.com/simurai)'s [duotone-dark](https://github.com/simurai/duotone-dark-syntax) Atom theme.
+
+The JetBrains Darcula theme was created by [vitstr](https://github.com/vitstr)
+
+The Bright Lights theme was created by [tw15egan](https://github.com/tw15egan)
+
+The Ubuntu theme was inspired by default Ubuntu's console colors. Created by [Maximus](http://superuser.com/questions/497240/ubuntu-purple-terminal-colors-in-conemu) and ported to iTerm2 by [stepin](https://github.com/stepin).
 
 If there are other color schemes you'd like to see included, drop me a line!
 
@@ -813,7 +859,7 @@ To install under the [X Window System](http://www.x.org/):
 
 ###Terminator color schemes###
 
-Edit your Terminator configuration file (located in: `$HOME/.config/terminator/config`) and add the configurations for the theme(s) you'd like to use the ``[profiles]`` section. The `terminator/` directory contains the config snippets you'll need. Just paste the configurations into the `[profiles]` sections, and you're good to go!  
+Edit your Terminator configuration file (located in: `$HOME/.config/terminator/config`) and add the configurations for the theme(s) you'd like to use the ``[profiles]`` section. The `terminator/` directory contains the config snippets you'll need. Just paste the configurations into the `[profiles]` sections, and you're good to go!
 
 At a minimum, this is all you need. You can customize the fonts and other aspects as well, if you wish. See the Terminator documentation for more details.
 
@@ -853,6 +899,9 @@ An example config file that includes the code snippet for the Symfonic theme wou
 Copy the themes from the `konsole` directory to `$HOME/.config/konsole`, restart Konsole and choose your new theme from the profile preferences window.
 
 If you want to make the themes available to all users, copy the .colorscheme files to `/usr/share/konsole`.
+
+###Terminal color schemes###
+Just double click on selected theme in `terminal` directory
 
 ###Previewing color schemes###
 

@@ -45,3 +45,7 @@ if [ ! -f "$HOME/.ctags" ]; then
   ln -s ~/dotfiles/ctags/ctags .ctags
   cd ~/dotfiles
 fi
+
+if type vagrant >/dev/null; then
+  vagrant plugin install vagrant-bindfs
+fi
