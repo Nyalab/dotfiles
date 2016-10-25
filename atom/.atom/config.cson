@@ -5,16 +5,8 @@
     helmDirSwitch: true
   "atom-material-ui":
     colors:
-      abaseColor:
-        alpha: 1
-        blue: 51
-        green: 51
-        red: 204
-      accentColor:
-        alpha: 1
-        blue: 247
-        green: 247
-        red: 247
+      abaseColor: "#cc3333"
+      accentColor: "#f7f7f7"
       predefinedColor: "Red"
     fonts: {}
     tabs:
@@ -30,16 +22,14 @@
   "clipboard-plus": {}
   core:
     disabledPackages: [
-      "activate-power-mode"
-      "smart-tab-name"
-      "file-icons"
       "react"
-      "atom-nude-pic"
+      "language-javascript-jsx"
+      "line-length-break"
     ]
     telemetryConsent: "limited"
     themes: [
-      "one-dark-ui"
-      "base16-tomorrow-dark-theme"
+      "one-light-ui"
+      "atom-material-syntax-light"
     ]
   docblockr: {}
   editor:
@@ -49,8 +39,7 @@
     showInvisibles: true
   "exception-reporting":
     userId: "6ea75670-e291-1815-555b-95ba4967dd73"
-  "file-icons":
-    onChanges: true
+  "file-icons": {}
   "flex-tool-bar": {}
   fonts:
     fontFamily: "FiraCode"
@@ -66,7 +55,8 @@
   "language-babel": {}
   "one-dark-ui":
     fontSize: 12
-  "one-light-ui": {}
+  "one-light-ui":
+    layoutMode: "Compact"
   "package-sync":
     createOnChange: true
     forceOverwrite: true
