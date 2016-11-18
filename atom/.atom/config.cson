@@ -3,6 +3,9 @@
     createDirectories: true
     fuzzyMatch: true
     helmDirSwitch: true
+  "atom-beautify":
+    general:
+      _analyticsUserId: "190f5a82-21cb-46c6-9feb-256b98d647e4"
   "atom-material-ui":
     colors:
       abaseColor: "#cc3333"

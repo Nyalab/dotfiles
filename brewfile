@@ -47,7 +47,7 @@ brew cask install hammerspoon
 brew cask install iterm2
 brew cask install grandperspective
 brew cask install postico
-brew cask install franz
+brew cask install franz # slack, messenger, ...
 
 # trop un pirateur tavu
 brew cask install vlc
@@ -57,15 +57,12 @@ brew cask install xquartz
 
 # web dev tavu
 brew cask install atom
-brew cask install firefox-nightly
 brew cask install firefox
 brew cask install google-chrome
 brew cask install virtualbox
 brew cask install vagrant
-brew cask install vagrant-manager
 brew cask install sequel-pro
 brew cask install cyberduck
-brew cask install hyperterm
 
 #fonts
 brew cask install font-comic-neue

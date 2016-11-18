@@ -1,5 +1,6 @@
 packages: [
   "advanced-open-file"
+  "atom-beautify"
   "atom-material-syntax"
   "atom-material-syntax-light"
   "blessed-light-syntax"
