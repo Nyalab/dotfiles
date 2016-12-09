@@ -28,6 +28,7 @@
       "react"
       "language-javascript-jsx"
       "line-length-break"
+      "smart-tab-name"
     ]
     telemetryConsent: "limited"
     themes: [
