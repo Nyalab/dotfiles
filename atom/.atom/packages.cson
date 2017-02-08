@@ -1,5 +1,7 @@
 packages: [
   "advanced-open-file"
+  "apex-syntax"
+  "apex-ui"
   "atom-beautify"
   "atom-material-syntax"
   "atom-material-syntax-light"
