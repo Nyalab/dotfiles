@@ -28,10 +28,10 @@ if [ ! -f "$HOME/.gitconfig" ]; then
 fi
 
 if [ ! -e "$HOME/.github_token" ]; then
-  echo_title "Saving a GitHub token"
-  echo_info "Press a key to start the process"
+  echo "Saving a GitHub token"
+  echo "Press a key to start the process"
   read -k
-  echo_info "Please login into your GitHub account to get a token & paste it (or just type enter to bypass this step):"
+  echo "Please login into your GitHub account to get a token & paste it (or just type enter to bypass this step):"
   open "https://github.com/settings/applications"
   read GITHUB_TOKEN
   if [ "$GITHUB_TOKEN" != "" ]
@@ -48,4 +48,5 @@ fi
 
 if type vagrant >/dev/null; then
   vagrant plugin install vagrant-bindfs
+  vagrant plugin install vagrant-vbguest
 fi

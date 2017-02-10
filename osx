@@ -2,7 +2,20 @@
 defaults write com.apple.finder AppleShowAllFiles TRUE
 killall Finder
 
-defaults write com.apple.dock autohide 1
-defaults write com.apple.dock tilesize 40
+defaults write com.apple.dock autohide 1 # auto hide the dock
+defaults write com.apple.dock tilesize 40 # tile size
+defaults write com.apple.dock mru-spaces 0 # don't switch spaces
+
+mkdir ~/screenshots
 defaults write com.apple.screencapture location ~/screenshots
 killall SystemUIServer
+
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+defaults write -globalDomain NSAutomaticCapitalizationEnabled -int 0
+defaults write -globalDomain NSAutomaticPeriodSubstitutionEnabled -int 0 
+defaults write -globalDomain NSAutomaticSpellingCorrectionEnabled -int 0
+
+# defaults delete NSGlobalDomain KeyRepeat
+# defaults delete NSGlobalDomain InitialKeyRepeat

@@ -16,13 +16,15 @@ brew tap caskroom/fonts
 brew tap josegonzalez/homebrew-php
 
 # la base, posey
+brew install tldr
 brew install zsh
 brew install git
 brew install hub
 brew install tig
 brew install cloc
 brew install node
-brew install brew-cask
+# brew install brew-cask
+brew install homebrew/completions/brew-cask-completion
 brew install wget
 brew install vim
 brew install heroku-toolbelt
@@ -37,6 +39,9 @@ echo "export NVM_DIR=~/.nvm" >> ~/.zshrc
 echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc # need to do it in another session
 nvm install iojs
 nvm alias default iojs
+brew install yarn
+brew install docker-machine
+brew install docker-machine-nfs
 
 # apps
 brew cask install limechat
@@ -47,7 +52,10 @@ brew cask install hammerspoon
 brew cask install iterm2
 brew cask install grandperspective
 brew cask install postico
-brew cask install franz # slack, messenger, ...
+# brew cask install franz # slack, messenger, ...
+brew cask install slack
+brew cask install discord
+brew cask install beardedspice
 
 # trop un pirateur tavu
 brew cask install vlc

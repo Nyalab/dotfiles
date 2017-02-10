@@ -35,7 +35,14 @@ export NVM_DIR="$HOME/.nvm"
 
 alias git=hub
 
-export NVM_DIR=~/.nvm
-source /usr/local/opt/nvm/nvm.sh
-
 export PATH="$PATH:`yarn global bin`"
+
+alias doma="docker-machine"
+alias domas="docker-machine start"
+alias domae="eval $(docker-machine env)"
+
+alias doco="docker-compose"
+alias docos="docker-compose stop"
+alias docorm="docker-compose rm"
+alias docoup="docker-compose up -d"
+alias docex="docker exec -it docker_overblog_1 bash"
