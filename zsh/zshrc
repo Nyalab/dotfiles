@@ -38,11 +38,9 @@ alias git=hub
 export PATH="$PATH:`yarn global bin`"
 
 alias doma="docker-machine"
-alias domas="docker-machine start"
-alias domae="eval $(docker-machine env)"
+domae() { eval $(docker-machine env) }
+alias domastart="docker-machine start && domae"
 
 alias doco="docker-compose"
-alias docos="docker-compose stop"
-alias docorm="docker-compose rm"
-alias docoup="docker-compose up -d"
+alias docoupd="docker-compose up -d"
 alias docex="docker exec -it docker_overblog_1 bash"

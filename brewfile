@@ -71,6 +71,7 @@ brew cask install virtualbox
 brew cask install vagrant
 brew cask install sequel-pro
 brew cask install cyberduck
+brew cask install sketch
 
 #fonts
 brew cask install font-comic-neue
@@ -80,3 +81,5 @@ brew cask install font-open-sans
 brew cask install font-open-sans-condensed
 brew cask install font-lato
 brew cask install font-fantasque-sans-mono
+
+brew cask install steam

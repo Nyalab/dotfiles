@@ -30,6 +30,17 @@
       "line-length-break"
       "smart-tab-name"
     ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "node_modules"
+      "vendor"
+    ]
     telemetryConsent: "limited"
     themes: [
       "one-light-ui"
@@ -97,8 +108,6 @@
   "tree-view":
     autoReveal: true
     focusOnReveal: false
-    hideIgnoredNames: true
-    showOnRightSide: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
