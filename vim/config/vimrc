@@ -11,7 +11,7 @@ Plugin 'evidens/vim-twig'
 Plugin 'mileszs/ack.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'edsono/vim-matchit'
+Plugin 'tmhedberg/matchit'
 Plugin 'joeytwiddle/sexy_scroller.vim'
 
 call vundle#end()
@@ -113,6 +113,8 @@ set clipboard=unnamed
 set expandtab "Use spaces instead of tabs
 set shiftwidth=2
 set tabstop=2
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
 
 "" Indentation guides
 let g:indent_guides_start_level=2
@@ -126,4 +128,4 @@ nmap <leader>j mA:Ack<space>
 nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
 nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
 
-" :autocmd BufWritePost * execute '!git ctags &' 
+" :autocmd BufWritePost * execute '!git ctags &'

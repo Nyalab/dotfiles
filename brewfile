@@ -56,6 +56,7 @@ brew cask install postico
 brew cask install slack
 brew cask install discord
 brew cask install beardedspice
+brew cask install kaomoji
 
 # trop un pirateur tavu
 brew cask install vlc
@@ -83,3 +84,5 @@ brew cask install font-lato
 brew cask install font-fantasque-sans-mono
 
 brew cask install steam
+
+gem install docker-sync

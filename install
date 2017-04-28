@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Install submodules for things like Vundle
+git submodule update --remote --init
+
 echo "donne moi les pleins pouvoirs, gros"
 sudo -v
 

@@ -2,7 +2,9 @@
 
 if [ ! -f ~/.vimrc ]; then
   cd ~
-  ln -s ~/dotfiles/vim/vimrc .vimrc
-  ln -s ~/dotfiles/vim/vim .vim
+  ln -s ~/dotfiles/vim/config/vimrc .vimrc
+  ln -s ~/dotfiles/vim/run .vim
   cd ~/dotfiles
 fi
+
+vim +PluginInstall +qall

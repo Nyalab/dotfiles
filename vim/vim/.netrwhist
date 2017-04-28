@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/sbalayn/dev/overblog/User/src/OverblogUser/NotificationBundle'
-let g:netrw_dirhist_2='/Users/sbalayn/dev/overblog/User/src/OverblogUser'
-let g:netrw_dirhist_3='/Users/sbalayn/dev/overblog/User/src/OverblogUser/ModelBundle'
-let g:netrw_dirhist_4='/Users/sbalayn/dev/overblog/User/src/OverblogUser/ModelBundle/Entity'

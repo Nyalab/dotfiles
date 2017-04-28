@@ -49,6 +49,7 @@
   docblockr: {}
   editor:
     fontFamily: "Fantasque Sans Mono"
+    fontSize: 13
     invisibles: {}
     lineHeight: 1.4
     showInvisibles: true
@@ -108,6 +109,7 @@
   "tree-view":
     autoReveal: true
     focusOnReveal: false
+    showOnRightSide: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
