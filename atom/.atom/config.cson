@@ -72,7 +72,8 @@
   "one-dark-ui":
     fontSize: 12
   "one-light-ui":
-    layoutMode: "Compact"
+    fontSize: 11
+    tabSizing: "Minimum"
   "package-sync":
     createOnChange: true
     forceOverwrite: true

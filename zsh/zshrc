@@ -43,4 +43,9 @@ alias domastart="docker-machine start && domae"
 
 alias doco="docker-compose"
 alias docoupd="docker-compose up -d"
-alias docex="docker exec -it docker_overblog_1 bash"
+alias docex="docker exec -it --user overblog docker_overblog_1 bash"
+docexec() {
+  current_path=`pwd`
+  container_path=`grealpath --relative-to="$HOME/dev/overblog" "$current_path"`
+  docex -c "cd $container_path && eval $*"
+} 
