@@ -51,6 +51,7 @@ brew cask install spotify
 brew cask install cloud
 brew cask install hammerspoon
 brew cask install iterm2
+brew cask install hyper
 brew cask install grandperspective
 brew cask install postico
 # brew cask install franz # slack, messenger, ...

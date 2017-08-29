@@ -41,11 +41,17 @@ alias doma="docker-machine"
 domae() { eval $(docker-machine env) }
 alias domastart="docker-machine start && domae"
 
-alias doco="docker-compose"
-alias docoupd="docker-compose up -d"
-alias docex="docker exec -it --user overblog docker_overblog_1 bash"
-docexec() {
+alias dockco="docker-compose"
+alias dockcoupd="docker-compose up -d"
+alias dockex="docker exec -it --user overblog docker_overblog_1 bash"
+alias dockexroot="docker exec -it docker_overblog_1 bash"
+dockexec() {
   current_path=`pwd`
   container_path=`grealpath --relative-to="$HOME/dev/overblog" "$current_path"`
-  docex -c "cd $container_path && eval $*"
+  dockex -c "cd $container_path && eval $*"
 } 
+dockobcompinstall() {
+  for project in $@;
+    do dockex -c "cd overblog/projects/$project && composer install -n";
+  done;
+}

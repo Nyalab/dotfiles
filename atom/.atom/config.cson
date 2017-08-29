@@ -29,6 +29,7 @@
       "language-javascript-jsx"
       "line-length-break"
       "smart-tab-name"
+      "merge-conflicts"
     ]
     ignoredNames: [
       ".git"
@@ -69,6 +70,9 @@
   "git-log": {}
   jumpy: {}
   "language-babel": {}
+  "linter-eslint": {}
+  "linter-ui-default":
+    panelHeight: 71.5
   "one-dark-ui":
     fontSize: 12
   "one-light-ui":
