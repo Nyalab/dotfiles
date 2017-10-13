@@ -4,3 +4,6 @@ cd ~
 ln -sf ~/dotfiles/hyper/hyper.js .hyper.js
 ln -sf ~/dotfiles/hyper/hyper_plugins .hyper_plugins
 cd ~/dotfiles
+
+npm install -g hpm-cli
+hpm install hyper-star-wars

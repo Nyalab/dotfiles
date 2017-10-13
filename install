@@ -10,11 +10,8 @@ if ! type "brew" > /dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-if ! type "/usr/local/bin/zsh" > /dev/null; then
-  brew install zsh
-  echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
-  chsh -s /usr/local/bin/zsh
-  echo "restart l'application de terminal pour finir l'install de zsh"
+if ! type "zsh" > /dev/null; then
+  . cli/install.sh
 fi
 
 zsh ./zshinstall

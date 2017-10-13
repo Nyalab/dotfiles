@@ -16,6 +16,7 @@ brew tap caskroom/fonts
 brew tap josegonzalez/homebrew-php
 
 # la base, posey
+brew install mas
 brew install tldr
 brew install zsh
 brew install git

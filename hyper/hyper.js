@@ -4,11 +4,15 @@
 
 module.exports = {
   config: {
-    fontSize: 14,
+    fontSize: 13,
     fontFamily: '"Fantasque Sans Mono", monospace',
     cursorShape: 'BEAM',
-    cursorBlink: true,
-    copyOnSelect: false
+    cursorBlink: false,
+    copyOnSelect: false,
+    enableVibrancy: true,
   },
-  plugins: [],
+  plugins: [
+    'hyper-one-light',
+    'hyper-simple-highlight-active-session'
+  ]
 };

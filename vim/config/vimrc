@@ -10,7 +10,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'evidens/vim-twig'
 Plugin 'mileszs/ack.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'NLKNguyen/papercolor-theme'
+" Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tmhedberg/matchit'
 Plugin 'joeytwiddle/sexy_scroller.vim'
 
@@ -24,7 +24,7 @@ set wrap
 set scrolloff=5		  " lines around cursor
 set showcmd
 set showmatch
-colorscheme PaperColor
+" colorscheme PaperColor
 
 " -- Recherche
 set ignorecase
