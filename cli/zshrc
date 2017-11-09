@@ -7,41 +7,26 @@ ulimit -n 1024
 #
 
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "${ZDOTDIR:-$HOME}/dotfiles/cli/zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/dotfiles/cli/zprezto/init.zsh"
 fi
-
-# Customize to your needs...
-# Adding colors to man pages
-man() {
-    env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
-    man "$@"
-}
-
-alias fuck='sudo $(history -p \!\!)'
-# added by travis gem
-[ -f /Users/sbalayn/.travis/travis.sh ] && source /Users/sbalayn/.travis/travis.sh
-
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=/Users/sbalayn/gocode
 
 if [[ -f $HOME/.github_token ]]
 then
   export GITHUB_TOKEN=$(cat $HOME/.github_token)
 fi
 
+# added by travis gem
+[ -f /Users/sbalayn/.travis/travis.sh ] && source /Users/sbalayn/.travis/travis.sh
+
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=/Users/sbalayn/gocode
+export PATH="$PATH:`yarn global bin`"
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
 
+alias fuck='sudo $(history -p \!\!)'
 alias git=hub
 
-export PATH="$PATH:`yarn global bin`"
-
 source "$HOME/dev/overblog/Docker/src/docker.sh"
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
