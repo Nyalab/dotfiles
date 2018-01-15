@@ -1,3 +1,7 @@
-[submodule "cli/.zprezto"]
-	path = cli/.zprezto
-	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "cli/zprezto"]
+  path = cli/zprezto
+  url = https://github.com/sorin-ionescu/prezto.git
+
+[submodule "iterm/rainglow_themes"]
+  path = iterm/rainglow_themes
+  url = https://github.com/rainglow/iterm.git
