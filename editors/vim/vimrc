@@ -7,14 +7,16 @@ Plug 'kien/ctrlp.vim'
 Plug 'evidens/vim-twig'
 Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
-Plug 'tmhedberg/matchit'
+"Plug 'tmhedberg/matchit'
 Plug 'joeytwiddle/sexy_scroller.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
+Plug 'Yggdroot/indentLine'
+Plug 'jamessan/vim-gnupg'
 call plug#end()
 
 " -- Display
@@ -26,6 +28,8 @@ set showmatch
 set wrap
 set laststatus=2
 set confirm
+
+set mouse=a
 
 " -- rendering
 set encoding=utf8
@@ -45,6 +49,7 @@ set hlsearch
 " -- Beep
 set visualbell
 set noerrorbells
+set t_vb=
 
 " -- perf
 set lazyredraw " don't update screen rendering when scripts/macro are working
@@ -71,7 +76,24 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" remaps
+" move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+" remap 0 to first non blank char
+map 0 ^
+" move lines with cmd-j/k
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
 highlight Visual cterm=reverse ctermbg=NONE " enable the highligh on visual mode (broken with the current color scheme)
+
+" map to change CWD to current dir of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 set backupdir=
 set directory=
@@ -90,6 +112,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --follow
       \ --ignore .hg
       \ --ignore .DS_Store
       \ --ignore node_modules
+      \ --ignore vendor
+      \ --ignore cache
       \ -g ""'
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_working_path_mode = 0
@@ -122,10 +146,10 @@ let g:indent_guides_guide_size=1
 " ack
 let g:ackprg="ag --nocolor --nogroup --column"
 " Place un marqueur et cherche
-nmap <leader>j mA:Ack<space>
+nmap <leader>j mA:Ack!<space>
 " Place un marqueur et cherche le mot sous le curseur
-nmap <leader>ja mA:Ack "<C-r>=expand("<cword>")<cr>"
-nmap <leader>jA mA:Ack "<C-r>=expand("<cWORD>")<cr>"
+nmap <leader>ja mA:Ack! "<C-r>=expand("<cword>")<cr>"
+nmap <leader>jA mA:Ack! "<C-r>=expand("<cWORD>")<cr>"
 
 " :autocmd BufWritePost * execute '!git ctags &'
 

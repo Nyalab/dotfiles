@@ -1,20 +1,12 @@
 #!/bin/sh
 
-# Install submodules for things like Vundle
-git submodule update --remote --init
-
 echo "donne moi les pleins pouvoirs, gros"
 sudo -v
 
-if ! type "brew" > /dev/null; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+# install submodules recursively
+git submodule update --remote --init --recursive
 
-if ! type "zsh" > /dev/null; then
-  . cli/install.sh
-fi
-
-zsh ./zshinstall
+. cli/init.sh
 
 source ./brewfile
 echo "don't forget to install tweetbot, microsoft remote desktop"

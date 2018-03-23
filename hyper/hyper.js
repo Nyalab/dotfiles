@@ -10,6 +10,9 @@ module.exports = {
     materialBox: {
       scheme: 'one-light',
     },
+    modifierKeys: {
+      cmdIsMeta: true,
+    },
   },
   plugins: [
     'hyper-material-box',

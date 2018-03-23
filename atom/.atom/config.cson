@@ -25,11 +25,9 @@
   "clipboard-plus": {}
   core:
     disabledPackages: [
-      "react"
-      "language-javascript-jsx"
       "line-length-break"
-      "smart-tab-name"
       "merge-conflicts"
+      "language-javascript-jsx"
     ]
     ignoredNames: [
       ".git"
@@ -50,12 +48,14 @@
   docblockr: {}
   editor:
     fontFamily: "Fantasque Sans Mono"
+    fontSize: 16
     invisibles: {}
     lineHeight: 1.4
     showInvisibles: true
   "exception-reporting":
     userId: "6ea75670-e291-1815-555b-95ba4967dd73"
-  "file-icons": {}
+  "file-icons":
+    coloured: false
   "flex-tool-bar": {}
   fonts:
     fontFamily: "FiraCode"
@@ -68,18 +68,28 @@
   "git-diff": {}
   "git-log": {}
   jumpy: {}
-  "language-babel": {}
+  "language-babel":
+    emmetCSSAutocomplete: true
   "linter-eslint": {}
   "linter-ui-default":
     panelHeight: 71.5
+    showPanel: true
   "one-dark-ui":
     fontSize: 12
   "one-light-ui":
-    fontSize: 11
-    tabSizing: "Minimum"
+    fontSize: 12
   "package-sync":
     createOnChange: true
     forceOverwrite: true
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      showInStatusBar: true
+    prettierOptions:
+      bracketSpacing: false
+      semi: false
+  rainglow:
+    SelectSyntax: "yule-light-rainglow-syntax"
   react: {}
   "smart-tab-name": {}
   "status-bar": {}
@@ -111,10 +121,9 @@
     iconSize: "16px"
     position: "Left"
   "tree-view":
-    autoReveal: true
     focusOnReveal: false
     hideVcsIgnoredFiles: true
-    showOnRightSide: true
+    showOnRightSide: false
     squashDirectoryNames: true
   welcome:
     showOnStartup: false

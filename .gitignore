@@ -1,5 +1,3 @@
-!.gitkeep
-
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -15,5 +13,3 @@ Icon
 .Spotlight-V100
 .Trashes
 
-# vim
-/editors/vim/plugged/*

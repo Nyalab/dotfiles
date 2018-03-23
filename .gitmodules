@@ -2,6 +2,10 @@
   path = cli/zprezto
   url = https://github.com/sorin-ionescu/prezto.git
 
-[submodule "iterm/rainglow_themes"]
-  path = iterm/rainglow_themes
-  url = https://github.com/rainglow/iterm.git
+[submodule "term/iterm/rainglow_themes"]
+	path = term/iterm/rainglow_themes
+	url = https://github.com/rainglow/iterm.git
+
+[submodule "term/iterm/dracula"]
+	path = term/iterm/dracula
+	url = https://github.com/dracula/iterm.git

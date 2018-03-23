@@ -24,9 +24,14 @@ export GOPATH=/Users/sbalayn/gocode
 export PATH="$PATH:`yarn global bin`"
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
+export GPG_TTY=`tty`
 
 alias fuck='sudo $(history -p \!\!)'
 alias git=hub
+alias sourcez='source ~/.zshrc'
+alias vimz='vim ~/.zshrc'
 
-source "$HOME/dev/overblog/Docker/src/docker.sh"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+OB_PATH_WORKSPACE="$HOME/dev/overblog"
+source "$OB_PATH_WORKSPACE/Docker/src/docker.sh"
